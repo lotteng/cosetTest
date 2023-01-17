@@ -35,6 +35,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             this.lblPw = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblId
             // 
@@ -96,12 +97,21 @@
             this.lblPw.TabIndex = 5;
             this.lblPw.Text = "PW";
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(52, 314);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 12);
+            this.lblResult.TabIndex = 6;
+            // 
             // Login
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 361);
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblPw);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnLogin);
@@ -125,6 +135,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblPw;
+        private System.Windows.Forms.Label lblResult;
     }
 }
 
