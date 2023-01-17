@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cosetTest", "cosetTest\cosetTest.csproj", "{B4FCBD69-3DA4-4977-885A-FEBDEA0D4F02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4FCBD69-3DA4-4977-885A-FEBDEA0D4F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FCBD69-3DA4-4977-885A-FEBDEA0D4F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FCBD69-3DA4-4977-885A-FEBDEA0D4F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FCBD69-3DA4-4977-885A-FEBDEA0D4F02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7408A2FE-9274-419B-AF28-4DAC7B7DA14D}
+	EndGlobalSection
+EndGlobal
