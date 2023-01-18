@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace cosetTest
 {
@@ -66,8 +67,16 @@ namespace cosetTest
         public void InsertDB(string id, string pw)
         {
             string connectString = string.Format("Server={0};Database={1};Uid={2};Pwd={3};", "192.168.10.240", "sampledb", "root", "coset!!123");
+           
+            //MessageBox.Show(id);  메시지창 띄움
 
-            string sql = "Insert Into product (num, productID, productName) values (NULL," + (string)id + "," + (string)pw + ")";
+            string sql = "INSERT INTO product (num, productID, productName) VALUES (NULL,'"
+                         + id
+                         + " ',' "
+                         + pw
+                         + " ') "; //Why 숫자만 전송? => *작은따옴표 추가 안해서*
+            
+            //string sql = "INSERT INTO product (num, productID, productName) VALUES (NULL, '{0}', '{1}' );", id, pw); 
 
             using (MySqlConnection connection = new MySqlConnection(connectString))
             {
