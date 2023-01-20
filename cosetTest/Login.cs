@@ -35,7 +35,7 @@ namespace cosetTest
 
                 string id = txtId.Text;
                 string pw = txtPw.Text;
-                string selectQuery = "SELECT * FROM USER WHERE  = \'" + id + "\' "; // MySQL에 전송할 명령어 입력. (USER 테이블 값 읽기)
+                string selectQuery = "SELECT * FROM USER WHERE ID_PK = \'" + id + "\' "; // MySQL에 전송할 명령어 입력. (USER 테이블 값 읽기)
 
                 MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
                 // MySqlCommand는 MySQL로 명령어를 전송하기 위한 클래스임.
@@ -49,7 +49,7 @@ namespace cosetTest
 
                 while (userAccount.Read()) // userAccount가 Read 되고 있을 동안
                 {
-                    if (id == (string)userAccount["ID_PK"] && pw == (string)userAccount["PW"]) // id, pw 가 USER 테이블의 필드명 정보와 일치한다면
+                    if ( /*id == (string)userAccount["ID_PK"] && */pw == (string)userAccount["PW"]) // id, pw 가 USER 테이블의 필드명 정보와 일치한다면
                     {
                         login_status = 1;
                     }
