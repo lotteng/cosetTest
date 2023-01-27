@@ -27,7 +27,7 @@ namespace cosetTest
         {
             try
             {
-                MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = sampledb; Uid = root ; Pwd = coset!!123");
+                MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
 
                 connection.Open(); // SQL 서버 연결
 
@@ -49,7 +49,7 @@ namespace cosetTest
 
                 while (userAccount.Read()) // userAccount가 Read 되고 있을 동안
                 {
-                    if ( /*id == (string)userAccount["ID_PK"] && */pw == (string)userAccount["PW"]) // id, pw 가 USER 테이블의 필드명 정보와 일치한다면
+                    if ( id == (string)userAccount["ID_PK"] && pw == (string)userAccount["PW"]) // id, pw 가 USER 테이블의 필드명 정보와 일치한다면
                     {
                         login_status = 1;
                     }
@@ -59,8 +59,15 @@ namespace cosetTest
 
                 if (login_status == 1)
                 {
-                    MessageBox.Show("환영합니다");
+                    //MessageBox.Show("환영합니다");
 
+
+                    this.Hide();
+                    
+                    Total Total = new Total();
+                    Total.Show();
+
+                    //this.Close();
                 }
 
                 else
@@ -76,6 +83,11 @@ namespace cosetTest
 
 
 
+        }
+
+        private void lblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
         }
     }
 }

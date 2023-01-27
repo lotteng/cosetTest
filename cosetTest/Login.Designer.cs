@@ -36,6 +36,7 @@
             this.lblId = new System.Windows.Forms.Label();
             this.lblPw = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
+            this.lblFind = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,12 +107,25 @@
             this.lblResult.Size = new System.Drawing.Size(0, 12);
             this.lblResult.TabIndex = 6;
             // 
+            // lblFind
+            // 
+            this.lblFind.AutoSize = true;
+            this.lblFind.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.lblFind.Location = new System.Drawing.Point(52, 311);
+            this.lblFind.Name = "lblFind";
+            this.lblFind.Size = new System.Drawing.Size(187, 12);
+            this.lblFind.TabIndex = 7;
+            this.lblFind.TabStop = true;
+            this.lblFind.Text = "아이디나 비밀번호를 잊으셨나요?";
+            this.lblFind.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblFind_LinkClicked);
+            // 
             // Login
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 361);
+            this.Controls.Add(this.lblFind);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblPw);
             this.Controls.Add(this.lblId);
@@ -139,6 +153,7 @@
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblPw;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.LinkLabel lblFind;
     }
 }
 
