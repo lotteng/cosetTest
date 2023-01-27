@@ -188,6 +188,7 @@
             this.comboRequest3.Name = "comboRequest3";
             this.comboRequest3.Size = new System.Drawing.Size(48, 20);
             this.comboRequest3.TabIndex = 6;
+            this.comboRequest3.DropDown += new System.EventHandler(this.comboRequest3_DropDown);
             // 
             // label2
             // 
@@ -206,6 +207,8 @@
             this.comboRequest2.Name = "comboRequest2";
             this.comboRequest2.Size = new System.Drawing.Size(73, 20);
             this.comboRequest2.TabIndex = 3;
+            this.comboRequest2.SelectedIndexChanged += new System.EventHandler(this.comboRequest2_SelectedIndexChanged);
+            this.comboRequest2.DropDownClosed += new System.EventHandler(this.comboRequest2_DropDownClosed);
             // 
             // comboRequest1
             // 

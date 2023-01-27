@@ -23,19 +23,19 @@ namespace cosetTest
         // default
         private void Total_Load(object sender, EventArgs e)
         {
-            string year, month, num;
+            string year, month ;
 
             DateTime thisDay = DateTime.Today;
 
-
             year = thisDay.ToString("yy");
             month = thisDay.ToString("MM");
-            num = "001";
-
 
             comboRequest1.Items.Add("A08");
-            comboRequest2.Items.Add(year + month);
-            comboRequest3.Items.Add(num);
+
+            //-- string -> int 로 변환한 뒤, 반복문으로 콤보박스에 -1 씩 넣어서 연도만들기 (2212, 2211, ...) --//
+            comboRequest2.Items.Add(year + month);  
+            comboRequest2.Items.Add("2212");
+            //---------------------------------//
 
             if (!comboCode.Items.Contains("3SP"))           comboCompany.Items.Add("3SP");
             if (!comboCode.Items.Contains("Denselight"))    comboCompany.Items.Add("Denselight");
@@ -45,14 +45,7 @@ namespace cosetTest
             if (!comboCode.Items.Contains("SHM"))           comboCompany.Items.Add("SHM");
             if (!comboCode.Items.Contains("Superlum"))      comboCompany.Items.Add("Superlum");
             if (!comboCode.Items.Contains("Hulaser"))       comboCompany.Items.Add("Hulaser");
-            //comboCompany.Items.Add("3SP");
-            //comboCompany.Items.Add("Denselight");
-            //comboCompany.Items.Add("Lumics");
-            //comboCompany.Items.Add("OptoEnergy");
-            //comboCompany.Items.Add("NKT");
-            //comboCompany.Items.Add("SHM");
-            //comboCompany.Items.Add("Superlum");
-            //comboCompany.Items.Add("Hulaser");
+
 
             if (comboRequest1.Items.Count > 0) comboRequest1.SelectedIndex = 0;
             if (comboRequest2.Items.Count > 0) comboRequest2.SelectedIndex = 0;
@@ -72,8 +65,10 @@ namespace cosetTest
         {
 
             //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
+
             String Request;
             Request = comboRequest1.Text + "-" + comboRequest2.Text + "-" + comboRequest3.Text ;
+            //-------------------------------------------------------------------------------------//
 
 
             MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
@@ -108,12 +103,34 @@ namespace cosetTest
             connection.Close();
         }
 
-        private void loading_Click(object sender, EventArgs e)
+
+
+        private void comboRequest3_DropDown(object sender, EventArgs e)
         {
+            String Request;
+            Request = comboRequest1.Text + "-" + comboRequest2.Text + "-";
 
+            MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
+
+            connection.Open();
+
+
+            string sql = "SELECT DISTINCT RIGHT(REQUEST,3) FROM `eunbi`.`PROGRESS` WHERE REQUEST LIKE '" + Request + "%' ORDER BY REQUEST";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                if (!comboRequest3.Items.Contains(reader["RIGHT(REQUEST,3)"]))
+                    comboRequest3.Items.Add(reader["RIGHT(REQUEST,3)"]);
+            }
+
+
+            reader.Close();
+            connection.Close();
         }
-
-
 
 
         // code
@@ -169,10 +186,18 @@ namespace cosetTest
         //}
 
 
-        // exit
-        private void button1_Click(object sender, EventArgs e)
+
+
+
+        // DropDown Events
+
+        private void comboRequest2_DropDownClosed(object sender, EventArgs e)
         {
-            Application.Exit();
+            comboRequest3.Items.Clear();
+        }
+        private void comboRequest2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboRequest3.Text = "";
         }
 
         private void comboCompany_DropDownClosed(object sender, EventArgs e)
@@ -184,5 +209,18 @@ namespace cosetTest
         {
             comboCode.Items.Clear();
         }
+
+
+
+
+
+
+        // exit
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
     }
 }
