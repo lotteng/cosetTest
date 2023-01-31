@@ -81,7 +81,6 @@ namespace cosetTest
             MySqlDataReader reader = cmd.ExecuteReader();
             
 
-            lstTotal.Items.Clear();
 
             while (reader.Read())
             {
