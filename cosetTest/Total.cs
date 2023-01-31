@@ -9,18 +9,90 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing.Text;
+using Org.BouncyCastle.Asn1.Crmf;
 
 namespace cosetTest
 {
     public partial class Total : Form
     {
+
+        private Point point = new Point(); // drag & drop
+
+
+        ////add shadow
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        const int CS_DROPSHADOW = 0x20000;
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ClassStyle |= CS_DROPSHADOW;
+        //        return cp;
+        //    }
+        //}
+
+
+
         public Total()
         {
             InitializeComponent();
         }
 
 
-        // default
+
+        // drag & drop (Move For Form)
+        private void panelDrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            point = new Point(e.X, e.Y);
+        }
+
+        private void panelDrag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
+            }
+        }
+
+
+
+        // minimize
+        private void imgMini_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+
+        // exit
+        private void imgExit_Click(object sender, EventArgs e)
+        {
+            {
+                this.Close();
+            }
+        }
+
+        // Open Form : Main
+        private void imgLogo_Click(object sender, EventArgs e)
+        {
+            // Form state(open) check
+            Form fc = Application.OpenForms["Main"];
+            if (fc != null)
+            {
+                fc.Close();
+            }
+
+            // Open Form
+            Main FormMain = new Main();
+            FormMain.Show();
+        }
+
+
+
+
+
+
+        // default setting
         private void Total_Load(object sender, EventArgs e)
         {
             string year, month ;
@@ -50,24 +122,57 @@ namespace cosetTest
             if (comboRequest1.Items.Count > 0) comboRequest1.SelectedIndex = 0;
             if (comboRequest2.Items.Count > 0) comboRequest2.SelectedIndex = 0;
             if (comboRequest3.Items.Count > 0) comboRequest3.SelectedIndex = 0;
-            if (comboCompany.Items.Count > 0) comboCompany.SelectedIndex = 0;
-            if (comboCode.Items.Count > 0) comboCode.SelectedIndex = 0;
-            if (comboSerial.Items.Count > 0) comboSerial.SelectedIndex = 0;
-
-            
+            //if (comboCompany.Items.Count > 0) comboCompany.SelectedIndex = 0;
+            //if (comboCode.Items.Count > 0) comboCode.SelectedIndex = 0;
+            //if (comboSerial.Items.Count > 0) comboSerial.SelectedIndex = 0;
 
 
         }
 
 
-        // search
-        private void btnSearch_Click(object sender, EventArgs e)
+
+
+
+        // * immediate search
+        private void comboRequest3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            imgSearch_Click(sender, e);
+        }
+
+
+        // search
+        private void imgSearch_Click(object sender, EventArgs e)
+        {
+
+            //--- 시리얼 Key로 잡아서 그리드뷰 중복방지 할 것 ---//
+
+
+            // 그리드뷰에 값이 존재하는 경우, 추가할 것인지 초기화 할 것인지 회신 요청
+            if (dataGridView1.Rows.Count != 0) {
+
+                if (MessageBox.Show("데이터가 이미 존재합니다. 추가하시겠습니까?" +
+                    "\n(Y: 이어서 추가, N: 비우기)", "데이터 추가", MessageBoxButtons.YesNoCancel) == DialogResult.No)
+                {
+                    dataGridView1.Rows.Clear();
+                }
+            }
 
             //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
 
             String Request;
-            Request = comboRequest1.Text + "-" + comboRequest2.Text + "-" + comboRequest3.Text ;
+
+            if (String.IsNullOrEmpty(comboRequest2.Text))
+            {
+                Request = comboRequest1.Text + "-";
+            }
+            else if (String.IsNullOrEmpty(comboRequest3.Text))
+            {
+                Request = comboRequest1.Text + "-" + comboRequest2.Text + "-";
+            }
+
+            else
+                Request = comboRequest1.Text + "-" + comboRequest2.Text + "-" + comboRequest3.Text;
+
             //-------------------------------------------------------------------------------------//
 
 
@@ -86,7 +191,10 @@ namespace cosetTest
             {
                 // lstTotal.Items.Add(reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]);
 
-                lstTotal.Items.Add(
+
+                // lstTotal.Items.Add(          // ListBox
+                dataGridView1.Rows.Add(         // DataGrid
+
                     reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]
                     + " " + reader["PB_TIME"] + " " + reader["PB_TEMP"] + " " + reader["CHP_DIFF"] + " " + reader["CHP_ITH"]
                     + " " + reader["CHP_WC"] + " " + reader["CHP_PLN"] + " " + reader["CHP_ILN"] + " " + reader["CHP_IOP"]
@@ -95,7 +203,23 @@ namespace cosetTest
                     + " " + reader["OSA_THR_MDL"] + " " + reader["OSA_THR_LOT"] + " " + reader["OSA_UNIT"]
                     );
 
+               // dataGridView1.Columns.Add(reader["PB_TIME"]);
             }
+
+
+
+
+            // rows index setting
+            dataGridView1.RowHeadersWidth = 60;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+            }
+
+
+            // rows count
+            lblCount.Text = "총 " + dataGridView1.Rows.Count.ToString() + "개";
 
 
             reader.Close();
@@ -104,6 +228,15 @@ namespace cosetTest
 
 
 
+        // Selected Rows Count
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            lblSelected.Text = dataGridView1.SelectedCells.Count.ToString() + "개 선택됨";
+        }
+
+
+
+        // Read table for "A**-****-nnn"
         private void comboRequest3_DropDown(object sender, EventArgs e)
         {
             String Request;
@@ -132,7 +265,7 @@ namespace cosetTest
         }
 
 
-        // code
+        // comboCode
         private void comboCode_DropDown(object sender, EventArgs e)
         {
             MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
@@ -156,35 +289,6 @@ namespace cosetTest
             reader.Close();
             connection.Close();
         }
-
-
-        //// company
-        //private void comboCompany_DropDown(object sender, EventArgs e)
-        //{
-
-        //    MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
-
-        //    connection.Open();
-
-
-        //    string sql = "SELECT DISTINCT CHIP_CO FROM `eunbi`.`PROGRESS` ORDER BY CHIP_CO";
-        //    MySqlCommand cmd = new MySqlCommand(sql, connection);
-        //    MySqlDataReader reader = cmd.ExecuteReader();
-
-
-
-        //    while (reader.Read())
-        //    {
-        //        comboCompany.Items.Add(reader["CHIP_CO"]);
-        //    }
-
-
-        //    reader.Close();
-        //    connection.Close();
-
-        //}
-
-
 
 
 
@@ -211,13 +315,19 @@ namespace cosetTest
 
 
 
-
-
-
-        // exit
-        private void button1_Click(object sender, EventArgs e)
+        ////reset
+        private void imgReset_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+        //    comboRequest3.Items.Clear();
+        //    comboCompany.Items.Clear();
+        //    comboCode.Items.Clear();
+        //    textSerial.Text = null;
+        //    textChipid.Text = null;
+        //    textDetail.Text = null;
+
+        //    string str =
+        //    //If textDetail.Text.IsNullorEmpty() 
+
         }
 
 
