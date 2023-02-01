@@ -22,7 +22,7 @@ namespace cosetTest
 
 
 
-        // drag & drop (Move For Form)
+    // drag & drop (Move For Form)
         private void panelDrag_MouseDown(object sender, MouseEventArgs e)
         {
             point = new Point(e.X, e.Y);
@@ -38,14 +38,11 @@ namespace cosetTest
 
 
 
-        // minimize
         private void imgMini_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-
-        // exit
         private void imgExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show ("프로그램을 종료하시겠습니까?","종료", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -63,7 +60,6 @@ namespace cosetTest
                 fc.Close();
             }
 
-            // Open Form
             Total FormTotal = new Total();
             FormTotal.Show();
         }

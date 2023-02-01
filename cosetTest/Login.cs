@@ -47,7 +47,7 @@ namespace cosetTest
         }
 
 
-        // Place holder
+    // Place holder
         private void RemovePlaceholder(object sender, EventArgs e)
         {
             TextBox txt = (TextBox)sender;
@@ -75,7 +75,7 @@ namespace cosetTest
 
 
 
-        // drag & drop (Move For Form)
+    // drag & drop (Move For Form)
         private void panelDrag_MouseDown(object sender, MouseEventArgs e)
         {
             point = new Point(e.X, e.Y);
@@ -91,7 +91,7 @@ namespace cosetTest
 
 
 
-        // Enter key
+    // Enter key
         private void txtId_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -169,7 +169,7 @@ namespace cosetTest
 
         }
 
-        // Find ID, PW
+    // Find ID, PW
         private void lblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             
@@ -185,7 +185,7 @@ namespace cosetTest
             this.WindowState = FormWindowState.Minimized;
         }
 
-        // checkbox image change
+    // checkbox image change
         private void checkAutologin_CheckedChanged(object sender, EventArgs e)
         {
             if (checkAutologin.Checked)
@@ -213,7 +213,7 @@ namespace cosetTest
         }
 
 
-        // Link Label Underline setting 
+    // Link Label Underline setting 
         private void Login_Load(object sender, EventArgs e)
         {
             lblFind.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;

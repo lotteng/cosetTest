@@ -56,7 +56,7 @@
             // imgLogo
             // 
             this.imgLogo.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\logo2.png";
-            this.imgLogo.Location = new System.Drawing.Point(85, 66);
+            this.imgLogo.Location = new System.Drawing.Point(85, 69);
             this.imgLogo.Name = "imgLogo";
             this.imgLogo.Size = new System.Drawing.Size(150, 60);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -67,7 +67,7 @@
             // 
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtId.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtId.Location = new System.Drawing.Point(71, 176);
+            this.txtId.Location = new System.Drawing.Point(71, 179);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(177, 18);
             this.txtId.TabIndex = 2;
@@ -88,8 +88,8 @@
             this.btnLogin.BackColor = System.Drawing.SystemColors.Window;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
@@ -104,7 +104,7 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(52, 314);
+            this.lblResult.Location = new System.Drawing.Point(53, 315);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(0, 12);
             this.lblResult.TabIndex = 6;
@@ -128,7 +128,7 @@
             // 
             this.imgMini.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgMini.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\minus2.png";
-            this.imgMini.Location = new System.Drawing.Point(274, 5);
+            this.imgMini.Location = new System.Drawing.Point(266, 8);
             this.imgMini.Name = "imgMini";
             this.imgMini.Size = new System.Drawing.Size(16, 16);
             this.imgMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -140,7 +140,7 @@
             // 
             this.imgExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgExit.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\close2.png";
-            this.imgExit.Location = new System.Drawing.Point(296, 5);
+            this.imgExit.Location = new System.Drawing.Point(288, 8);
             this.imgExit.Name = "imgExit";
             this.imgExit.Size = new System.Drawing.Size(16, 16);
             this.imgExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -150,6 +150,7 @@
             // 
             // panelDrag
             // 
+            this.panelDrag.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelDrag.Controls.Add(this.lblCopy);
             this.panelDrag.Controls.Add(this.imgMini);
             this.panelDrag.Controls.Add(this.btnLogin);
@@ -163,10 +164,11 @@
             this.panelDrag.Controls.Add(this.pictureBox1);
             this.panelDrag.Controls.Add(this.pictureBox2);
             this.panelDrag.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panelDrag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrag.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelDrag.Location = new System.Drawing.Point(-4, -4);
+            this.panelDrag.Location = new System.Drawing.Point(1, 1);
             this.panelDrag.Name = "panelDrag";
-            this.panelDrag.Size = new System.Drawing.Size(320, 439);
+            this.panelDrag.Size = new System.Drawing.Size(312, 412);
             this.panelDrag.TabIndex = 27;
             this.panelDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseDown);
             this.panelDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseMove);
@@ -229,7 +231,7 @@
             // pictureBox1
             // 
             this.pictureBox1.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\textbox.png";
-            this.pictureBox1.Location = new System.Drawing.Point(59, 172);
+            this.pictureBox1.Location = new System.Drawing.Point(59, 175);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -251,7 +253,7 @@
             this.lblCopy.AutoSize = true;
             this.lblCopy.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCopy.ForeColor = System.Drawing.Color.Silver;
-            this.lblCopy.Location = new System.Drawing.Point(63, 396);
+            this.lblCopy.Location = new System.Drawing.Point(65, 396);
             this.lblCopy.Name = "lblCopy";
             this.lblCopy.Size = new System.Drawing.Size(185, 13);
             this.lblCopy.TabIndex = 29;
@@ -263,15 +265,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(314, 414);
             this.ControlBox = false;
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.panelDrag);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Login_Load);

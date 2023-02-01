@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Drawing.Text;
 using Org.BouncyCastle.Asn1.Crmf;
+using Excel = Microsoft.Office.Interop.Excel; // 'Excel =' 추가한 이유? 모호한 참조 오류 발생(System에 선언되어 있는 클래스나 메소드 이름 같음)
+using Google.Protobuf.WellKnownTypes;
 
 namespace cosetTest
 {
@@ -41,7 +43,7 @@ namespace cosetTest
 
 
 
-        // drag & drop (Move For Form)
+    // drag & drop (Move For Form)
         private void panelDrag_MouseDown(object sender, MouseEventArgs e)
         {
             point = new Point(e.X, e.Y);
@@ -57,14 +59,14 @@ namespace cosetTest
 
 
 
-        // minimize
+    // minimize
         private void imgMini_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
 
-        // exit
+    // exit
         private void imgExit_Click(object sender, EventArgs e)
         {
             {
@@ -72,7 +74,7 @@ namespace cosetTest
             }
         }
 
-        // Open Form : Main
+    // Open Form : Main
         private void imgLogo_Click(object sender, EventArgs e)
         {
             // Form state(open) check
@@ -92,7 +94,7 @@ namespace cosetTest
 
 
 
-        // default setting
+    // default setting
         private void Total_Load(object sender, EventArgs e)
         {
             string year, month ;
@@ -104,9 +106,20 @@ namespace cosetTest
 
             comboRequest1.Items.Add("A08");
 
-            //-- string -> int 로 변환한 뒤, 반복문으로 콤보박스에 -1 씩 넣어서 연도만들기 (2212, 2211, ...) --//
-            comboRequest2.Items.Add(year + month);  
-            comboRequest2.Items.Add("2212");
+            //-- string -> int 로 변환한 뒤, 반복문으로 콤보박스에 -1 씩 넣어서 연도만들기 (2212, 2211, ...) --// --> 이전년도 수동기입검색이 안됨
+            comboRequest2.Items.Add(year + month);
+            for ( int i = 0; i < 36; i++)
+            {
+                comboRequest2.Items.Add
+                (
+                    (Convert.ToInt32(year) - 1).ToString()
+                    +
+                    (Convert.ToInt32(month) - 1).ToString()
+                );
+            }
+            
+            
+
             //---------------------------------//
 
             if (!comboCode.Items.Contains("3SP"))           comboCompany.Items.Add("3SP");
@@ -133,29 +146,33 @@ namespace cosetTest
 
 
 
-        // * immediate search
+
+    // * immediate search
         private void comboRequest3_SelectedIndexChanged(object sender, EventArgs e)
         {
             imgSearch_Click(sender, e);
         }
 
 
-        // search
+
+
+
+
+    // search
         private void imgSearch_Click(object sender, EventArgs e)
         {
 
-            //--- 시리얼 Key로 잡아서 그리드뷰 중복방지 할 것 ---//
+            if ((comboRequest1.Text == null) || (comboRequest2.Text == null))
+            {
+                MessageBox.Show("생산요구서를 선택해주세요.");
 
+                return;
 
-            // 그리드뷰에 값이 존재하는 경우, 추가할 것인지 초기화 할 것인지 회신 요청
-            if (dataGridView1.Rows.Count != 0) {
-
-                if (MessageBox.Show("데이터가 이미 존재합니다. 추가하시겠습니까?" +
-                    "\n(Y: 이어서 추가, N: 비우기)", "데이터 추가", MessageBoxButtons.YesNoCancel) == DialogResult.No)
-                {
-                    dataGridView1.Rows.Clear();
-                }
             }
+
+
+            Cursor.Current = Cursors.WaitCursor;
+
 
             //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
 
@@ -176,16 +193,28 @@ namespace cosetTest
             //-------------------------------------------------------------------------------------//
 
 
-            MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
+            MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123; Allow Zero Datetime=True");
+
+            MySqlDataAdapter mySqlDataAdapter;
 
             connection.Open();
 
-            //string sql = "SELECT REQUEST, CODE, PKG_SERIAL, CHIP_CO, CHIP_ID FROM `eunbi`.`PROGRESS` WHERE REQUEST LIKE 'A08%'";
             string sql = " SELECT * FROM `eunbi`.`PROGRESS` WHERE REQUEST LIKE '" + Request + "%' ORDER BY REQUEST ";
-            MySqlCommand cmd = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
+
             
 
+
+            // Grid View
+            mySqlDataAdapter = new MySqlDataAdapter(sql, connection);
+            DataSet DS = new DataSet();
+            mySqlDataAdapter.Fill(DS);
+            dataGridView1.DataSource = DS.Tables[0];
+
+
+            /* list View
+
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
@@ -203,10 +232,12 @@ namespace cosetTest
                     + " " + reader["OSA_THR_MDL"] + " " + reader["OSA_THR_LOT"] + " " + reader["OSA_UNIT"]
                     );
 
-               // dataGridView1.Columns.Add(reader["PB_TIME"]);
+                // dataGridView1.Columns.Add(reader["PB_TIME"]);
             }
 
+            reader.Close();
 
+            */
 
 
             // rows index setting
@@ -222,21 +253,35 @@ namespace cosetTest
             lblCount.Text = "총 " + dataGridView1.Rows.Count.ToString() + "개";
 
 
-            reader.Close();
+            // Auto Insert Combo_Text
+            comboCode_DropDown(sender, e);
+            comboCode.SelectedItem = dataGridView1.Rows[0].Cells[1].FormattedValue.ToString();
+            comboCompany.SelectedItem = dataGridView1.Rows[0].Cells[3].FormattedValue.ToString(); // ★ 3SP -> 3SPT 로 통일시켜야함 ★
+                                                                                                  // 현재 콤보값은 3SP로 되어있어서 타사 선택 후 3SPT를 누르면 변경이 안됨
+
+
+
             connection.Close();
+
+
+            Cursor.Current = Cursors.Default;
         }
 
 
 
-        // Selected Rows Count
-        private void dataGridView1_Click(object sender, EventArgs e)
+
+
+
+    // Selected Rows Count
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             lblSelected.Text = dataGridView1.SelectedCells.Count.ToString() + "개 선택됨";
         }
 
 
 
-        // Read table for "A**-****-nnn"
+
+        // Read table for Request : A**-****-'nnn'
         private void comboRequest3_DropDown(object sender, EventArgs e)
         {
             String Request;
@@ -265,7 +310,7 @@ namespace cosetTest
         }
 
 
-        // comboCode
+    // comboCode
         private void comboCode_DropDown(object sender, EventArgs e)
         {
             MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
@@ -292,7 +337,7 @@ namespace cosetTest
 
 
 
-        // DropDown Events
+    // DropDown Events
 
         private void comboRequest2_DropDownClosed(object sender, EventArgs e)
         {
@@ -315,7 +360,7 @@ namespace cosetTest
 
 
 
-        ////reset
+    // reset
         private void imgReset_Click(object sender, EventArgs e)
         {
         //    comboRequest3.Items.Clear();
@@ -329,6 +374,74 @@ namespace cosetTest
         //    //If textDetail.Text.IsNullorEmpty() 
 
         }
+
+
+        // export excel -------> 참조: Microsoft.Office.Interop.Excel (없으면 .dll 다운)
+        private void lblExcel_Click(object sender, EventArgs e)
+        {
+            imgExcel_Click(sender, e);
+        }
+
+        private void imgExcel_Click(object sender, EventArgs e)
+        {
+
+
+            if ( dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("데이터를 선택해주세요.");
+                return;
+            }
+
+
+            Excel.Application xlApp = new Excel.Application();
+            if (xlApp == null)
+            {
+                MessageBox.Show("엑셀이 설치되지 않았습니다.");
+                return;
+            }
+
+
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Title = "Export Excel";
+            sfd.Filter = "Excel Files(2007)|*.xlsx|Excel Files(2003)|*.xls";
+            sfd.FileName = dataGridView1.Rows[0].Cells[0].FormattedValue.ToString();
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                // copy
+                dataGridView1.SelectAll();
+                DataObject dataObj = dataGridView1.GetClipboardContent();
+                if (dataObj != null) Clipboard.SetDataObject(dataObj);
+
+
+                object misValue = System.Reflection.Missing.Value;
+
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(misValue);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1); // get_Item(i) = n번째 시트;
+
+
+                // paste in excel
+
+                //xlApp.Visible = true;         // 실시간 엑셀파일 보기 끔. 저장 중인 엑셀파일을 바로 보려면 주석 풀기.
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[2, 1];  // 컬럼은 제외!
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing, true);
+                xlWorkBook.SaveAs(sfd.FileName, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,
+                    System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing);
+
+                xlApp.Quit();
+
+                dataGridView1.ClearSelection();
+
+                Cursor.Current = Cursors.Default;
+            }
+
+
+        }
+
 
 
     }
