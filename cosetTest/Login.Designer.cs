@@ -277,6 +277,7 @@
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "로그인";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();

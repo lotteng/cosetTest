@@ -13,6 +13,7 @@ using System.Drawing.Text;
 using Org.BouncyCastle.Asn1.Crmf;
 using Excel = Microsoft.Office.Interop.Excel; // 'Excel =' 추가한 이유? 모호한 참조 오류 발생(System에 선언되어 있는 클래스나 메소드 이름 같음)
 using Google.Protobuf.WellKnownTypes;
+using System.Runtime.CompilerServices;
 
 namespace cosetTest
 {
@@ -94,28 +95,43 @@ namespace cosetTest
 
 
 
-    // default setting
+        // default setting
         private void Total_Load(object sender, EventArgs e)
         {
-            string year, month ;
-
-            DateTime thisDay = DateTime.Today;
-
-            year = thisDay.ToString("yy");
-            month = thisDay.ToString("MM");
 
             comboRequest1.Items.Add("A08");
 
-            //-- string -> int 로 변환한 뒤, 반복문으로 콤보박스에 -1 씩 넣어서 연도만들기 (2212, 2211, ...) --// --> 이전년도 수동기입검색이 안됨
-            comboRequest2.Items.Add(year + month);
-            for ( int i = 0; i < 36; i++)
+
+            int year, month;
+
+            DateTime thisDay = DateTime.Today;
+            year = Convert.ToInt32(thisDay.ToString("yy"));
+            month = Convert.ToInt32(thisDay.ToString("MM"));
+
+ 
+            for (int i = 0; i < 24; i++)    // Add 24 month
             {
-                comboRequest2.Items.Add
-                (
-                    (Convert.ToInt32(year) - 1).ToString()
-                    +
-                    (Convert.ToInt32(month) - 1).ToString()
-                );
+
+                if (month < 10)
+                {
+                    comboRequest2.Items.Add(year.ToString() + "0" + month.ToString());
+                    
+                }
+
+                else
+                {
+                    comboRequest2.Items.Add(year.ToString() + month.ToString());
+                }
+
+                month = month - 1;
+
+                if (month == 0)
+                {
+                    year = year - 1;
+                    month = 12;
+                }
+
+
             }
             
             
@@ -171,100 +187,114 @@ namespace cosetTest
             }
 
 
-            Cursor.Current = Cursors.WaitCursor;
-
-
-            //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
-
-            String Request;
-
-            if (String.IsNullOrEmpty(comboRequest2.Text))
+            try
             {
-                Request = comboRequest1.Text + "-";
+                Cursor.Current = Cursors.WaitCursor;
+
+
+                //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
+
+                String Request;
+
+                if (String.IsNullOrEmpty(comboRequest2.Text))
+                {
+                    Request = comboRequest1.Text + "-";
+                }
+                else if (String.IsNullOrEmpty(comboRequest3.Text))
+                {
+                    Request = comboRequest1.Text + "-" + comboRequest2.Text + "-";
+                }
+
+                else
+                    Request = comboRequest1.Text + "-" + comboRequest2.Text + "-" + comboRequest3.Text;
+
+                //-------------------------------------------------------------------------------------//
+
+
+                MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123; Allow Zero Datetime=True");
+
+                MySqlDataAdapter mySqlDataAdapter;
+
+                connection.Open();
+
+                string sql = " SELECT * FROM `eunbi`.`PROGRESS` WHERE REQUEST LIKE '" + Request + "%' ORDER BY REQUEST ";
+
+
+
+
+                // Grid View
+                mySqlDataAdapter = new MySqlDataAdapter(sql, connection);
+                DataSet DS = new DataSet();
+                mySqlDataAdapter.Fill(DS);
+                dataGridView1.DataSource = DS.Tables[0];
+
+
+                /* list View
+
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    // lstTotal.Items.Add(reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]);
+
+
+                    // lstTotal.Items.Add(          // ListBox
+                    dataGridView1.Rows.Add(         // DataGrid
+
+                        reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]
+                        + " " + reader["PB_TIME"] + " " + reader["PB_TEMP"] + " " + reader["CHP_DIFF"] + " " + reader["CHP_ITH"]
+                        + " " + reader["CHP_WC"] + " " + reader["CHP_PLN"] + " " + reader["CHP_ILN"] + " " + reader["CHP_IOP"]
+                        + " " + reader["CHP_LOT"] + " " + reader["CHP_LOT(O)"] + " " + reader["OSA_SUB_MDL"] + " " + reader["OSA_SUB_LOT"]
+                        + " " + reader["OSA_PD_CO"] + " " + reader["OSA_PD_MDL"] + " " + reader["OSA_PD_LOT"] + " " + reader["OSA_THR_CO"]
+                        + " " + reader["OSA_THR_MDL"] + " " + reader["OSA_THR_LOT"] + " " + reader["OSA_UNIT"]
+                        );
+
+                    // dataGridView1.Columns.Add(reader["PB_TIME"]);
+                }
+
+                reader.Close();
+
+                */
+
+
+                // rows index setting
+                dataGridView1.RowHeadersWidth = 60;
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                }
+
+
+                // rows count
+                lblCount.Text = "총 " + dataGridView1.Rows.Count.ToString() + "개";
+
+
+                // Auto Insert Combo_Text
+                comboCode_DropDown(sender, e);
+                comboCode.SelectedItem = dataGridView1.Rows[0].Cells[1].FormattedValue.ToString();
+                comboCompany.SelectedItem = dataGridView1.Rows[0].Cells[3].FormattedValue.ToString(); // ★ 3SP -> 3SPT 로 통일시켜야함 ★
+                                                                                                      // 현재 콤보값은 3SP로 되어있어서 타사 선택 후 3SPT를 누르면 변경이 안됨
+                connection.Close();
+
             }
-            else if (String.IsNullOrEmpty(comboRequest3.Text))
+
+            catch (ArgumentOutOfRangeException)
             {
-                Request = comboRequest1.Text + "-" + comboRequest2.Text + "-";
+                MessageBox.Show("해당 생산요구서가 존재하지 않습니다.");
             }
 
-            else
-                Request = comboRequest1.Text + "-" + comboRequest2.Text + "-" + comboRequest3.Text;
+            //catch (Exception e)
+            //{
 
-            //-------------------------------------------------------------------------------------//
-
-
-            MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123; Allow Zero Datetime=True");
-
-            MySqlDataAdapter mySqlDataAdapter;
-
-            connection.Open();
-
-            string sql = " SELECT * FROM `eunbi`.`PROGRESS` WHERE REQUEST LIKE '" + Request + "%' ORDER BY REQUEST ";
-
-            
+            //}
 
 
-            // Grid View
-            mySqlDataAdapter = new MySqlDataAdapter(sql, connection);
-            DataSet DS = new DataSet();
-            mySqlDataAdapter.Fill(DS);
-            dataGridView1.DataSource = DS.Tables[0];
-
-
-            /* list View
-
-            MySqlCommand cmd = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            finally
             {
-                // lstTotal.Items.Add(reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]);
-
-
-                // lstTotal.Items.Add(          // ListBox
-                dataGridView1.Rows.Add(         // DataGrid
-
-                    reader["REQUEST"] + " " + reader["CODE"] + " " + reader["PKG_SERIAL"] + " " + reader["CHIP_CO"] + " " + reader["CHIP_ID"]
-                    + " " + reader["PB_TIME"] + " " + reader["PB_TEMP"] + " " + reader["CHP_DIFF"] + " " + reader["CHP_ITH"]
-                    + " " + reader["CHP_WC"] + " " + reader["CHP_PLN"] + " " + reader["CHP_ILN"] + " " + reader["CHP_IOP"]
-                    + " " + reader["CHP_LOT"] + " " + reader["CHP_LOT(O)"] + " " + reader["OSA_SUB_MDL"] + " " + reader["OSA_SUB_LOT"]
-                    + " " + reader["OSA_PD_CO"] + " " + reader["OSA_PD_MDL"] + " " + reader["OSA_PD_LOT"] + " " + reader["OSA_THR_CO"]
-                    + " " + reader["OSA_THR_MDL"] + " " + reader["OSA_THR_LOT"] + " " + reader["OSA_UNIT"]
-                    );
-
-                // dataGridView1.Columns.Add(reader["PB_TIME"]);
+                 Cursor.Current = Cursors.Default;
             }
-
-            reader.Close();
-
-            */
-
-
-            // rows index setting
-            dataGridView1.RowHeadersWidth = 60;
-
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
-            }
-
-
-            // rows count
-            lblCount.Text = "총 " + dataGridView1.Rows.Count.ToString() + "개";
-
-
-            // Auto Insert Combo_Text
-            comboCode_DropDown(sender, e);
-            comboCode.SelectedItem = dataGridView1.Rows[0].Cells[1].FormattedValue.ToString();
-            comboCompany.SelectedItem = dataGridView1.Rows[0].Cells[3].FormattedValue.ToString(); // ★ 3SP -> 3SPT 로 통일시켜야함 ★
-                                                                                                  // 현재 콤보값은 3SP로 되어있어서 타사 선택 후 3SPT를 누르면 변경이 안됨
-
-
-
-            connection.Close();
-
-
-            Cursor.Current = Cursors.Default;
         }
 
 
