@@ -189,8 +189,11 @@ namespace cosetTest
 
             try
             {
+
+
                 Cursor.Current = Cursors.WaitCursor;
 
+                
 
                 //--- 검색 조건 리턴해주는 함수 빌드하기 ---//
 
@@ -277,7 +280,7 @@ namespace cosetTest
                 comboCompany.SelectedItem = dataGridView1.Rows[0].Cells[3].FormattedValue.ToString(); // ★ 3SP -> 3SPT 로 통일시켜야함 ★
                                                                                                       // 현재 콤보값은 3SP로 되어있어서 타사 선택 후 3SPT를 누르면 변경이 안됨
                 connection.Close();
-
+                
             }
 
             catch (ArgumentOutOfRangeException)
@@ -293,7 +296,9 @@ namespace cosetTest
 
             finally
             {
-                 Cursor.Current = Cursors.Default;
+
+                Cursor.Current = Cursors.Default;
+
             }
         }
 
@@ -378,15 +383,15 @@ namespace cosetTest
             comboRequest3.Text = "";
         }
 
-        private void comboCompany_DropDownClosed(object sender, EventArgs e)
-        {
-            comboCompany.Items.Clear();
-        }
+        //private void comboCompany_DropDownClosed(object sender, EventArgs e)
+        //{
+        //    comboCompany.Items.Clear();
+        //}
 
-        private void comboCode_DropDownClosed(object sender, EventArgs e)
-        {
-            comboCode.Items.Clear();
-        }
+        //private void comboCode_DropDownClosed(object sender, EventArgs e)
+        //{
+        //    comboCode.Items.Clear();
+        //}
 
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using MySqlX.XDevAPI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,22 +9,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace cosetTest
 {
     public partial class Main : Form
     {
 
-        private Point point = new Point(); // drag & drop
+        Total FormTotal = new Total();
+
+        private System.Drawing.Point point = new System.Drawing.Point(); // drag & drop
 
 
         // sliding menu (navigation bar)
-        const int MAX_SLIDING_HEIGHT = 110;
+        const int MAX_SLIDING_HEIGHT = 170;
         const int MIN_SLIDING_HEIGHT = 3;
         int SLIDING_LOCATION;
 
-        const int STEP_SLIDING = 10;    // speed
-        int _posSliding = 3;            // default sliding size (OPEN/CLOSE)
+        const int STEP_SLIDING = 12;    // speed
+        int _posSliding = 0;            // default sliding size (OPEN/CLOSE)
         int _stepSliding = 0;           // default sliding location (MOVE)
 
 
@@ -33,21 +38,41 @@ namespace cosetTest
             InitializeComponent();
         }
 
+        private void Main_Load(object sender, EventArgs e)
+        {
+            panelTop.Visible = false;
+            panelSerial.Visible= false;
+            panelBoard.Visible= false;
+            panelFinal.Visible= false;
+
+
+            comboQuick.Items.Add("바로가기");
+            comboQuick.Items.Add("생산진행현황");
+            if (comboQuick.Items.Count > 0) comboQuick.SelectedIndex = 0;
+
+
+            dataGridViewSerial.Rows.Add(false, 1, "SK23040511");
+            dataGridViewSerial.Rows.Add(false, 2, "SK23040512");
+            dataGridViewSerial.Rows.Add(false, 3, "SK23040513");
+
+        }
+
 
         // drag & drop (Move For Form)
 
 
         private void panelDrag_MouseDown(object sender, MouseEventArgs e)
         {
-            point = new Point(e.X, e.Y);
+            point = new System.Drawing.Point(e.X, e.Y);
         }
 
         private void panelDrag_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
-                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
+                this.Location = new System.Drawing.Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
             }
+
         }
 
 
@@ -56,37 +81,52 @@ namespace cosetTest
         private void label16_MouseHover(object sender, EventArgs e)
         {
             timerNaviOpen.Start();
-            timerNaviMove.Start();
+            panelNaviMove.BackColor = SystemColors.ActiveCaption;
+            //timerNaviMove.Start();
             SLIDING_LOCATION = 8;
 
+            panelNaviMove.Location = new System.Drawing.Point(SLIDING_LOCATION, 91);
         }
+        private void label16_MouseLeave(object sender, EventArgs e)
+        {
+            panelNaviMove.BackColor = Color.Gainsboro;
+        }
+
         private void label13_MouseHover(object sender, EventArgs e)
         {
             timerNaviOpen.Start();
-            timerNaviMove.Start();
+            panelNaviMove.BackColor = SystemColors.ActiveCaption;
+            //timerNaviMove.Start();
             SLIDING_LOCATION = 88;
+
+            panelNaviMove.Location = new System.Drawing.Point(SLIDING_LOCATION, 91);
         }
 
+        private void label13_MouseLeave(object sender, EventArgs e)
+        {
+            panelNaviMove.BackColor = Color.Gainsboro;
+        }
 
         private void timerNaviMove_Tick(object sender, EventArgs e)
         {
 
-            if ( SLIDING_LOCATION >= panelNaviMove.Location.X)
-            {
-                _stepSliding += 2;
-            }
+            //if ( SLIDING_LOCATION >= panelNaviMove.Location.X)
+            //{
+            //    _stepSliding += 2;
+            //}
 
-            else
-            {
-                _stepSliding -= 2;
-            }
+            //else
+            //{
+            //    _stepSliding -= 2;
+            //}
 
-            if (SLIDING_LOCATION == panelNaviMove.Location.X)
-            {
-                timerNaviMove.Stop();
-            }
+            //if (SLIDING_LOCATION == panelNaviMove.Location.X)
+            //{
+            //    timerNaviMove.Stop();
+            //}
 
-            panelNaviMove.Location = new Point(_stepSliding, 84);
+            // panelNaviMove.Location = new Point(_stepSliding, 84);
+
         }
 
 
@@ -94,21 +134,25 @@ namespace cosetTest
         {
             timerNaviClose.Start();
         }
+
         private void panelNavigation_MouseLeave(object sender, EventArgs e)
         {
+            timerNaviOpen.Stop();
             timerNaviClose.Start();
         }
-
         private void timerNaviOpen_Tick(object sender, EventArgs e)
         {
             timerNaviClose.Stop();
 
-            _posSliding += STEP_SLIDING;
+            
             if (_posSliding >= MAX_SLIDING_HEIGHT)
             {
                 timerNaviOpen.Stop();
             }
-
+            else
+            {
+                _posSliding += STEP_SLIDING;
+            }
             panelNavigation.Height = _posSliding;
 
         }
@@ -117,10 +161,14 @@ namespace cosetTest
         {
             timerNaviOpen.Stop();
 
-            _posSliding -= STEP_SLIDING;
+            
             if (_posSliding <= MIN_SLIDING_HEIGHT)
             {
                 timerNaviClose.Stop();
+            }
+            else
+            {
+                _posSliding -= STEP_SLIDING;
             }
 
             panelNavigation.Height = _posSliding;
@@ -129,9 +177,259 @@ namespace cosetTest
 
 
 
+        // open other form quickly ---(2 ways)---> [ select from combo / press enter key ]
+        private void comboQuick_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboQuick_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void comboQuick_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboQuick.Text == "생산진행현황")
+            {
+                // Form state check (IsOpen)
+                Form fc = System.Windows.Forms.Application.OpenForms["Total"];
+                if (fc != null)
+                {
+                    fc.Close();
+                }
+
+
+                FormTotal.Show();
+
+            }
+        }
+
+
+        // final (Test Process)
+        private void lblFinal_Click(object sender, EventArgs e)
+        {
+            // Form state(open) check
+            Form fc = System.Windows.Forms.Application.OpenForms["Side"];
+            if (fc != null)
+            {
+                fc.Close();
+
+                Side FormSide = new Side();
+
+                FormSide.StartPosition = FormStartPosition.Manual;
+                FormSide.Location = new System.Drawing.Point(this.Location.X + 1000, this.Location.Y);
+                FormSide.Show();
+
+                imgSide.Image = Properties.Resources.arrow_bck;
+            }
+
+        }
+        // side
+        private void imgSide_Click(object sender, EventArgs e)
+        {
+
+            // Form state(open) check
+            Form fc = System.Windows.Forms.Application.OpenForms["Side"];
+            if (fc != null)
+            {
+                fc.Close();
+
+                imgSide.Image = Properties.Resources.arrow_nxt;
+            }
+
+            else
+            {
+                Side FormSide = new Side();
+                
+                FormSide.StartPosition = FormStartPosition.Manual;
+                FormSide.Location = new System.Drawing.Point(this.Location.X + 1000, this.Location.Y);
+                FormSide.Show();
+
+                imgSide.Image = Properties.Resources.arrow_bck;
+            }
+        }
+
+        private void imgSide_MouseHover(object sender, EventArgs e)
+        {
+            imgSide.BackColor = Color.LightGray;
+        }
+
+        private void imgSide_MouseLeave(object sender, EventArgs e)
+        {
+            imgSide.BackColor = Color.Gainsboro;
+        }
 
 
 
+
+        // help control
+        private void imgHelp_MouseHover(object sender, EventArgs e)
+        {
+            panelHelp.Visible = true;
+        }
+
+        private void imgHelp_MouseLeave(object sender, EventArgs e)
+        {
+            panelHelp.Visible = false;
+        }
+
+
+        private void imgSerialView_MouseHover(object sender, EventArgs e)
+        {
+            lblSerialView.Visible = true;
+        }
+
+        private void imgSerialView_MouseLeave(object sender, EventArgs e)
+        {
+            lblSerialView.Visible = false;
+        }
+
+        private void imgSubmit_MouseHover(object sender, EventArgs e)
+        {
+            lblSubmit.Visible = true;
+        }
+
+        private void imgSubmit_MouseLeave(object sender, EventArgs e)
+        {
+            lblSubmit.Visible = false;
+        }
+
+        private void imgDefect_MouseHover(object sender, EventArgs e)
+        {
+            lblDefect.Visible = true;
+        }
+
+        private void imgDefect_MouseLeave(object sender, EventArgs e)
+        {
+            lblDefect.Visible = false;
+        }
+
+
+
+
+
+
+        // spec
+
+        String[] spec = new string[10];
+
+        private void imgSpec_Click(object sender, EventArgs e)
+        {   
+            if (!textSpec1.Enabled)
+            {   
+                if (!string.IsNullOrWhiteSpace(textSpec1.Text)) spec[0] = textSpec1.Text;   // overflow index 방지 if문
+                if (!string.IsNullOrWhiteSpace(textSpec2.Text)) spec[1] = textSpec2.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec3.Text)) spec[2] = textSpec3.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec4.Text)) spec[3] = textSpec4.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec5.Text)) spec[4] = textSpec5.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec6.Text)) spec[5] = textSpec6.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec7.Text)) spec[6] = textSpec7.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec8.Text)) spec[7] = textSpec8.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec9.Text)) spec[8] = textSpec9.Text;
+                if (!string.IsNullOrWhiteSpace(textSpec10.Text)) spec[9] = textSpec10.Text;
+
+                textSpec1.Enabled = true;   textSpec1.BackColor = Color.White;
+                textSpec2.Enabled = true;   textSpec2.BackColor = Color.White;
+                textSpec3.Enabled = true;   textSpec3.BackColor = Color.White;
+                textSpec4.Enabled = true;   textSpec4.BackColor = Color.White;
+                textSpec5.Enabled = true;   textSpec5.BackColor = Color.White;
+                textSpec6.Enabled = true;   textSpec6.BackColor = Color.White;
+                textSpec7.Enabled = true;   textSpec7.BackColor = Color.White;
+                textSpec8.Enabled = true;   textSpec8.BackColor = Color.White;
+                textSpec9.Enabled = true;   textSpec9.BackColor = Color.White;
+                textSpec10.Enabled = true;  textSpec10.BackColor = Color.White;
+
+            }
+            else
+            {
+                if (MessageBox.Show("변경사항을 저장하시겠습니까?", "Spec 변경", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    if (!string.IsNullOrWhiteSpace(spec[0])) textSpec1.Text = spec[0].ToString();   // overflow index 방지 if문
+                    if (!string.IsNullOrWhiteSpace(spec[1])) textSpec2.Text = spec[1].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[2])) textSpec3.Text = spec[2].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[3])) textSpec4.Text = spec[3].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[4])) textSpec5.Text = spec[4].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[5])) textSpec6.Text = spec[5].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[6])) textSpec7.Text = spec[6].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[7])) textSpec8.Text = spec[7].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[8])) textSpec9.Text = spec[8].ToString();
+                    if (!string.IsNullOrWhiteSpace(spec[9])) textSpec10.Text = spec[9].ToString();
+                }
+
+                textSpec1.Enabled = false;  textSpec1.BackColor = Color.LightGray;
+                textSpec2.Enabled = false;  textSpec2.BackColor = Color.LightGray;
+                textSpec3.Enabled = false;  textSpec3.BackColor = Color.LightGray;
+                textSpec4.Enabled = false;  textSpec4.BackColor = Color.LightGray;
+                textSpec5.Enabled = false;  textSpec5.BackColor = Color.LightGray;
+                textSpec6.Enabled = false;  textSpec6.BackColor = Color.LightGray;
+                textSpec7.Enabled = false;  textSpec7.BackColor = Color.LightGray;
+                textSpec8.Enabled = false;  textSpec8.BackColor = Color.LightGray;
+                textSpec9.Enabled = false;  textSpec9.BackColor = Color.LightGray;
+                textSpec10.Enabled = false; textSpec10.BackColor = Color.LightGray;
+            }
+            
+        }
+
+
+        private void imgReset_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("초기 상태로 되돌립니다.", "Spec 초기화", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                textSpec1.Text = "246.5483";
+                textSpec2.Text = "157";
+                textSpec3.Text = "159.73";
+                textSpec4.Text = "159.79";
+                textSpec5.Text = "156.48";
+                textSpec6.Text = "157.67";
+                textSpec7.Text = "";
+                textSpec8.Text = 393.ToString();
+                textSpec9.Text = 379.ToString();
+                textSpec10.Text = "";
+
+                textSpec1.Enabled = false; textSpec1.BackColor = Color.LightGray;
+                textSpec2.Enabled = false; textSpec2.BackColor = Color.LightGray;
+                textSpec3.Enabled = false; textSpec3.BackColor = Color.LightGray;
+                textSpec4.Enabled = false; textSpec4.BackColor = Color.LightGray;
+                textSpec5.Enabled = false; textSpec5.BackColor = Color.LightGray;
+                textSpec6.Enabled = false; textSpec6.BackColor = Color.LightGray;
+                textSpec7.Enabled = false; textSpec7.BackColor = Color.LightGray;
+                textSpec8.Enabled = false; textSpec8.BackColor = Color.LightGray;
+                textSpec9.Enabled = false; textSpec9.BackColor = Color.LightGray;
+                textSpec10.Enabled = false; textSpec10.BackColor = Color.LightGray;
+            }
+        }
+
+
+
+
+
+
+
+        // remark
+
+        String remark;
+        
+        private void imgRemark_Click(object sender, EventArgs e)
+        {
+            if ( !textRemark.Enabled )
+            {
+                remark = textRemark.Text;
+
+                textRemark.Enabled = true;
+                textRemark.BackColor = Color.White;
+            }
+            else
+            {
+
+                if (MessageBox.Show("변경사항을 저장하시겠습니까?", "Remark 변경", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    textRemark.Text = remark;
+                }
+
+                textRemark.Enabled = false;
+                textRemark.BackColor = Color.WhiteSmoke;
+                
+            }
+        }
 
 
 
@@ -144,66 +442,10 @@ namespace cosetTest
 
         private void imgExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show ("프로그램을 종료하시겠습니까?","종료", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("프로그램을 종료하시겠습니까?", "종료", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Application.Exit();
+                System.Windows.Forms.Application.Exit();
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            // Form state check (IsOpen)
-            Form fc = Application.OpenForms["Total"];
-            if (fc != null)
-            {
-                fc.Close();
-            }
-
-            Total FormTotal = new Total();
-            FormTotal.Show();
-        }
-
-
-
-
-
-        private void imgHelp_MouseHover(object sender, EventArgs e)
-        {
-            panelHelp.Visible = true;
-        }
-
-        private void imgHelp_MouseLeave(object sender, EventArgs e)
-        {
-            panelHelp.Visible = false;
-        }
-
-
-
-
-
-
-
-
-        private void panel1_Enter(object sender, EventArgs e)
-        {
-            panel5.BackColor = SystemColors.ActiveCaption;
-        }
-
-        private void panel1_Leave(object sender, EventArgs e)
-        {
-            panel5.BackColor = Color.Gainsboro;
-        }
-
-        private void panel2_Enter(object sender, EventArgs e)
-        {
-            panel4.BackColor = SystemColors.ActiveCaption;
-        }
-
-        private void panel2_Leave(object sender, EventArgs e)
-        {
-            panel4.BackColor = Color.Gainsboro;
-        }
-
-
     }
 }

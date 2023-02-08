@@ -124,4 +124,10 @@
   <data name="check_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arrow_bck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_bck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_nxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_nxt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

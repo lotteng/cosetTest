@@ -30,38 +30,28 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtPw = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
             this.lblFind = new System.Windows.Forms.LinkLabel();
-            this.imgMini = new System.Windows.Forms.PictureBox();
-            this.imgExit = new System.Windows.Forms.PictureBox();
             this.panelDrag = new System.Windows.Forms.Panel();
-            this.checkBoxID = new System.Windows.Forms.CheckBox();
+            this.lblCopy = new System.Windows.Forms.Label();
             this.imglistCheck = new System.Windows.Forms.ImageList(this.components);
+            this.imgMini = new System.Windows.Forms.PictureBox();
+            this.checkBoxID = new System.Windows.Forms.CheckBox();
+            this.imgExit = new System.Windows.Forms.PictureBox();
             this.checkAutologin = new System.Windows.Forms.CheckBox();
+            this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblCopy = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
+            this.panelDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgExit)).BeginInit();
-            this.panelDrag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imgLogo
-            // 
-            this.imgLogo.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\logo2.png";
-            this.imgLogo.Location = new System.Drawing.Point(85, 69);
-            this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(150, 60);
-            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLogo.TabIndex = 0;
-            this.imgLogo.TabStop = false;
             // 
             // txtId
             // 
@@ -124,30 +114,6 @@
             this.lblFind.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblFind_LinkClicked);
             this.lblFind.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblFind_MouseMove);
             // 
-            // imgMini
-            // 
-            this.imgMini.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgMini.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\minus2.png";
-            this.imgMini.Location = new System.Drawing.Point(266, 8);
-            this.imgMini.Name = "imgMini";
-            this.imgMini.Size = new System.Drawing.Size(16, 16);
-            this.imgMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgMini.TabIndex = 26;
-            this.imgMini.TabStop = false;
-            this.imgMini.Click += new System.EventHandler(this.imgMini_Click);
-            // 
-            // imgExit
-            // 
-            this.imgExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgExit.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\close2.png";
-            this.imgExit.Location = new System.Drawing.Point(288, 8);
-            this.imgExit.Name = "imgExit";
-            this.imgExit.Size = new System.Drawing.Size(16, 16);
-            this.imgExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgExit.TabIndex = 25;
-            this.imgExit.TabStop = false;
-            this.imgExit.Click += new System.EventHandler(this.imgExit_Click);
-            // 
             // panelDrag
             // 
             this.panelDrag.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -173,6 +139,36 @@
             this.panelDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseDown);
             this.panelDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseMove);
             // 
+            // lblCopy
+            // 
+            this.lblCopy.AutoSize = true;
+            this.lblCopy.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblCopy.ForeColor = System.Drawing.Color.Silver;
+            this.lblCopy.Location = new System.Drawing.Point(65, 396);
+            this.lblCopy.Name = "lblCopy";
+            this.lblCopy.Size = new System.Drawing.Size(185, 13);
+            this.lblCopy.TabIndex = 29;
+            this.lblCopy.Text = "ⓒ 2022. COSET All rights reserved.";
+            // 
+            // imglistCheck
+            // 
+            this.imglistCheck.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistCheck.ImageStream")));
+            this.imglistCheck.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglistCheck.Images.SetKeyName(0, "check_off.png");
+            this.imglistCheck.Images.SetKeyName(1, "check_on.png");
+            // 
+            // imgMini
+            // 
+            this.imgMini.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgMini.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\minus2.png";
+            this.imgMini.Location = new System.Drawing.Point(266, 8);
+            this.imgMini.Name = "imgMini";
+            this.imgMini.Size = new System.Drawing.Size(16, 16);
+            this.imgMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgMini.TabIndex = 26;
+            this.imgMini.TabStop = false;
+            this.imgMini.Click += new System.EventHandler(this.imgMini_Click);
+            // 
             // checkBoxID
             // 
             this.checkBoxID.Appearance = System.Windows.Forms.Appearance.Button;
@@ -197,12 +193,17 @@
             this.checkBoxID.UseVisualStyleBackColor = true;
             this.checkBoxID.CheckedChanged += new System.EventHandler(this.checkBoxID_CheckedChanged);
             // 
-            // imglistCheck
+            // imgExit
             // 
-            this.imglistCheck.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistCheck.ImageStream")));
-            this.imglistCheck.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglistCheck.Images.SetKeyName(0, "check_off.png");
-            this.imglistCheck.Images.SetKeyName(1, "check_on.png");
+            this.imgExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgExit.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\close2.png";
+            this.imgExit.Location = new System.Drawing.Point(288, 8);
+            this.imgExit.Name = "imgExit";
+            this.imgExit.Size = new System.Drawing.Size(16, 16);
+            this.imgExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgExit.TabIndex = 25;
+            this.imgExit.TabStop = false;
+            this.imgExit.Click += new System.EventHandler(this.imgExit_Click);
             // 
             // checkAutologin
             // 
@@ -228,6 +229,16 @@
             this.checkAutologin.UseVisualStyleBackColor = true;
             this.checkAutologin.CheckedChanged += new System.EventHandler(this.checkAutologin_CheckedChanged);
             // 
+            // imgLogo
+            // 
+            this.imgLogo.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\logo6.png";
+            this.imgLogo.Location = new System.Drawing.Point(85, 72);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Size = new System.Drawing.Size(150, 60);
+            this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLogo.TabIndex = 0;
+            this.imgLogo.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\textbox.png";
@@ -247,17 +258,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
-            // 
-            // lblCopy
-            // 
-            this.lblCopy.AutoSize = true;
-            this.lblCopy.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblCopy.ForeColor = System.Drawing.Color.Silver;
-            this.lblCopy.Location = new System.Drawing.Point(65, 396);
-            this.lblCopy.Name = "lblCopy";
-            this.lblCopy.Size = new System.Drawing.Size(185, 13);
-            this.lblCopy.TabIndex = 29;
-            this.lblCopy.Text = "ⓒ 2022. COSET All rights reserved.";
             // 
             // Login
             // 
@@ -280,11 +280,11 @@
             this.Text = "로그인";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Login_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgMini)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgExit)).EndInit();
             this.panelDrag.ResumeLayout(false);
             this.panelDrag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMini)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

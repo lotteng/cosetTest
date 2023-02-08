@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle216 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle217 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle218 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle219 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle220 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Total));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.lblHelp = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnYear = new System.Windows.Forms.Button();
-            this.imgSearch = new System.Windows.Forms.PictureBox();
             this.comboProgress = new System.Windows.Forms.ComboBox();
-            this.imgReset = new System.Windows.Forms.PictureBox();
             this.comboTeam = new System.Windows.Forms.ComboBox();
             this.btn6Month = new System.Windows.Forms.Button();
             this.lblProcess = new System.Windows.Forms.Label();
+            this.textDetail = new System.Windows.Forms.TextBox();
             this.dateStart = new System.Windows.Forms.DateTimePicker();
             this.btn3Month = new System.Windows.Forms.Button();
+            this.lblDetail = new System.Windows.Forms.Label();
             this.btnToday = new System.Windows.Forms.Button();
             this.comboCode = new System.Windows.Forms.ComboBox();
             this.dateEnd = new System.Windows.Forms.DateTimePicker();
@@ -62,31 +63,31 @@
             this.lblRequest = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelDrag = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblPrint = new System.Windows.Forms.Label();
+            this.lblExcel = new System.Windows.Forms.Label();
+            this.panelGridview = new System.Windows.Forms.Panel();
+            this.lblSelected = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.imgPrint = new System.Windows.Forms.PictureBox();
+            this.imgExcel = new System.Windows.Forms.PictureBox();
+            this.imgHelp = new System.Windows.Forms.PictureBox();
+            this.imgSearch = new System.Windows.Forms.PictureBox();
+            this.imgReset = new System.Windows.Forms.PictureBox();
             this.imgMini = new System.Windows.Forms.PictureBox();
             this.imgExit = new System.Windows.Forms.PictureBox();
-            this.lblCount = new System.Windows.Forms.Label();
-            this.lblSelected = new System.Windows.Forms.Label();
-            this.panelGridview = new System.Windows.Forms.Panel();
-            this.imgExcel = new System.Windows.Forms.PictureBox();
-            this.imgPrint = new System.Windows.Forms.PictureBox();
-            this.lblExcel = new System.Windows.Forms.Label();
-            this.lblPrint = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblDetail = new System.Windows.Forms.Label();
-            this.textDetail = new System.Windows.Forms.TextBox();
-            this.imgHelp = new System.Windows.Forms.PictureBox();
-            this.lblHelp = new System.Windows.Forms.Label();
+            this.lblLoding = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelDrag.SuspendLayout();
+            this.panelGridview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgExit)).BeginInit();
-            this.panelGridview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -126,6 +127,17 @@
             this.panelTop.Size = new System.Drawing.Size(984, 110);
             this.panelTop.TabIndex = 0;
             // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblHelp.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblHelp.Location = new System.Drawing.Point(27, 10);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(217, 13);
+            this.lblHelp.TabIndex = 41;
+            this.lblHelp.Text = "최근 2개년만 표시됩니다. (그 외 수동기입)";
+            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -146,18 +158,6 @@
             this.btnYear.Text = "1년";
             this.btnYear.UseVisualStyleBackColor = true;
             // 
-            // imgSearch
-            // 
-            this.imgSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgSearch.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\search.png";
-            this.imgSearch.Location = new System.Drawing.Point(952, 32);
-            this.imgSearch.Name = "imgSearch";
-            this.imgSearch.Size = new System.Drawing.Size(18, 18);
-            this.imgSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgSearch.TabIndex = 38;
-            this.imgSearch.TabStop = false;
-            this.imgSearch.Click += new System.EventHandler(this.imgSearch_Click);
-            // 
             // comboProgress
             // 
             this.comboProgress.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -166,18 +166,6 @@
             this.comboProgress.Name = "comboProgress";
             this.comboProgress.Size = new System.Drawing.Size(166, 23);
             this.comboProgress.TabIndex = 27;
-            // 
-            // imgReset
-            // 
-            this.imgReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgReset.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reset.png";
-            this.imgReset.Location = new System.Drawing.Point(924, 33);
-            this.imgReset.Name = "imgReset";
-            this.imgReset.Size = new System.Drawing.Size(17, 17);
-            this.imgReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgReset.TabIndex = 37;
-            this.imgReset.TabStop = false;
-            this.imgReset.Click += new System.EventHandler(this.imgReset_Click);
             // 
             // comboTeam
             // 
@@ -208,6 +196,16 @@
             this.lblProcess.TabIndex = 24;
             this.lblProcess.Text = "공정";
             // 
+            // textDetail
+            // 
+            this.textDetail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.textDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textDetail.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textDetail.Location = new System.Drawing.Point(778, 30);
+            this.textDetail.Name = "textDetail";
+            this.textDetail.Size = new System.Drawing.Size(132, 23);
+            this.textDetail.TabIndex = 18;
+            // 
             // dateStart
             // 
             this.dateStart.CustomFormat = "yyyy-MM-dd (ddd)";
@@ -228,6 +226,16 @@
             this.btn3Month.TabIndex = 35;
             this.btn3Month.Text = "3개월";
             this.btn3Month.UseVisualStyleBackColor = true;
+            // 
+            // lblDetail
+            // 
+            this.lblDetail.AutoSize = true;
+            this.lblDetail.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblDetail.Location = new System.Drawing.Point(716, 33);
+            this.lblDetail.Name = "lblDetail";
+            this.lblDetail.Size = new System.Drawing.Size(60, 17);
+            this.lblDetail.TabIndex = 17;
+            this.lblDetail.Text = "상세검색";
             // 
             // btnToday
             // 
@@ -386,51 +394,51 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle216.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle216.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle216.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle216.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle216;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle217.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle217.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle217.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle217.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle217.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle217.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle217.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle217;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle218.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle218.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle218.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle218.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            dataGridViewCellStyle218.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle218.SelectionForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle218.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle218;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.Location = new System.Drawing.Point(1, 1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle219.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle219.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle219.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle219.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle219.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle219.SelectionForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle219.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle219;
-            dataGridViewCellStyle220.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle220.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            dataGridViewCellStyle220.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle220.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle220.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle220;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(982, 568);
             this.dataGridView1.TabIndex = 21;
@@ -439,6 +447,7 @@
             // panelDrag
             // 
             this.panelDrag.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDrag.Controls.Add(this.lblLoding);
             this.panelDrag.Controls.Add(this.lblTitle);
             this.panelDrag.Controls.Add(this.lblPrint);
             this.panelDrag.Controls.Add(this.lblExcel);
@@ -458,6 +467,128 @@
             this.panelDrag.TabIndex = 22;
             this.panelDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseDown);
             this.panelDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseMove);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.lblTitle.Location = new System.Drawing.Point(18, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(128, 21);
+            this.lblTitle.TabIndex = 40;
+            this.lblTitle.Text = "▶ 생산진행현황";
+            // 
+            // lblPrint
+            // 
+            this.lblPrint.AutoSize = true;
+            this.lblPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPrint.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblPrint.Location = new System.Drawing.Point(36, 742);
+            this.lblPrint.Name = "lblPrint";
+            this.lblPrint.Size = new System.Drawing.Size(31, 15);
+            this.lblPrint.TabIndex = 44;
+            this.lblPrint.Text = "인쇄";
+            // 
+            // lblExcel
+            // 
+            this.lblExcel.AutoSize = true;
+            this.lblExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblExcel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblExcel.Location = new System.Drawing.Point(106, 742);
+            this.lblExcel.Name = "lblExcel";
+            this.lblExcel.Size = new System.Drawing.Size(55, 15);
+            this.lblExcel.TabIndex = 40;
+            this.lblExcel.Text = "내보내기";
+            this.lblExcel.Click += new System.EventHandler(this.lblExcel_Click);
+            // 
+            // panelGridview
+            // 
+            this.panelGridview.BackColor = System.Drawing.Color.Silver;
+            this.panelGridview.Controls.Add(this.dataGridView1);
+            this.panelGridview.Location = new System.Drawing.Point(12, 166);
+            this.panelGridview.Name = "panelGridview";
+            this.panelGridview.Padding = new System.Windows.Forms.Padding(1);
+            this.panelGridview.Size = new System.Drawing.Size(984, 570);
+            this.panelGridview.TabIndex = 42;
+            // 
+            // lblSelected
+            // 
+            this.lblSelected.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSelected.Location = new System.Drawing.Point(831, 740);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(100, 17);
+            this.lblSelected.TabIndex = 41;
+            this.lblSelected.Text = "0개 선택됨";
+            this.lblSelected.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCount
+            // 
+            this.lblCount.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblCount.Location = new System.Drawing.Point(915, 740);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(80, 17);
+            this.lblCount.TabIndex = 40;
+            this.lblCount.Text = "총 0개";
+            this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // imgPrint
+            // 
+            this.imgPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgPrint.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\print.png";
+            this.imgPrint.Location = new System.Drawing.Point(18, 741);
+            this.imgPrint.Name = "imgPrint";
+            this.imgPrint.Size = new System.Drawing.Size(16, 16);
+            this.imgPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgPrint.TabIndex = 43;
+            this.imgPrint.TabStop = false;
+            // 
+            // imgExcel
+            // 
+            this.imgExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgExcel.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\excel.png";
+            this.imgExcel.Location = new System.Drawing.Point(88, 741);
+            this.imgExcel.Name = "imgExcel";
+            this.imgExcel.Size = new System.Drawing.Size(16, 16);
+            this.imgExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgExcel.TabIndex = 40;
+            this.imgExcel.TabStop = false;
+            this.imgExcel.Click += new System.EventHandler(this.imgExcel_Click);
+            // 
+            // imgHelp
+            // 
+            this.imgHelp.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.imgHelp.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\help3.png";
+            this.imgHelp.Location = new System.Drawing.Point(10, 8);
+            this.imgHelp.Name = "imgHelp";
+            this.imgHelp.Size = new System.Drawing.Size(16, 16);
+            this.imgHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgHelp.TabIndex = 40;
+            this.imgHelp.TabStop = false;
+            // 
+            // imgSearch
+            // 
+            this.imgSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgSearch.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\search.png";
+            this.imgSearch.Location = new System.Drawing.Point(952, 32);
+            this.imgSearch.Name = "imgSearch";
+            this.imgSearch.Size = new System.Drawing.Size(18, 18);
+            this.imgSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgSearch.TabIndex = 38;
+            this.imgSearch.TabStop = false;
+            this.imgSearch.Click += new System.EventHandler(this.imgSearch_Click);
+            // 
+            // imgReset
+            // 
+            this.imgReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgReset.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reset.png";
+            this.imgReset.Location = new System.Drawing.Point(924, 33);
+            this.imgReset.Name = "imgReset";
+            this.imgReset.Size = new System.Drawing.Size(17, 17);
+            this.imgReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgReset.TabIndex = 37;
+            this.imgReset.TabStop = false;
+            this.imgReset.Click += new System.EventHandler(this.imgReset_Click);
             // 
             // imgMini
             // 
@@ -483,134 +614,16 @@
             this.imgExit.TabStop = false;
             this.imgExit.Click += new System.EventHandler(this.imgExit_Click);
             // 
-            // lblCount
+            // lblLoding
             // 
-            this.lblCount.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblCount.Location = new System.Drawing.Point(915, 740);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(80, 17);
-            this.lblCount.TabIndex = 40;
-            this.lblCount.Text = "총 0개";
-            this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblSelected
-            // 
-            this.lblSelected.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSelected.Location = new System.Drawing.Point(831, 740);
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(100, 17);
-            this.lblSelected.TabIndex = 41;
-            this.lblSelected.Text = "0개 선택됨";
-            this.lblSelected.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panelGridview
-            // 
-            this.panelGridview.BackColor = System.Drawing.Color.Silver;
-            this.panelGridview.Controls.Add(this.dataGridView1);
-            this.panelGridview.Location = new System.Drawing.Point(12, 166);
-            this.panelGridview.Name = "panelGridview";
-            this.panelGridview.Padding = new System.Windows.Forms.Padding(1);
-            this.panelGridview.Size = new System.Drawing.Size(984, 570);
-            this.panelGridview.TabIndex = 42;
-            // 
-            // imgExcel
-            // 
-            this.imgExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgExcel.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\excel.png";
-            this.imgExcel.Location = new System.Drawing.Point(88, 741);
-            this.imgExcel.Name = "imgExcel";
-            this.imgExcel.Size = new System.Drawing.Size(16, 16);
-            this.imgExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgExcel.TabIndex = 40;
-            this.imgExcel.TabStop = false;
-            this.imgExcel.Click += new System.EventHandler(this.imgExcel_Click);
-            // 
-            // imgPrint
-            // 
-            this.imgPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgPrint.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\print.png";
-            this.imgPrint.Location = new System.Drawing.Point(18, 741);
-            this.imgPrint.Name = "imgPrint";
-            this.imgPrint.Size = new System.Drawing.Size(16, 16);
-            this.imgPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgPrint.TabIndex = 43;
-            this.imgPrint.TabStop = false;
-            // 
-            // lblExcel
-            // 
-            this.lblExcel.AutoSize = true;
-            this.lblExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblExcel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblExcel.Location = new System.Drawing.Point(106, 742);
-            this.lblExcel.Name = "lblExcel";
-            this.lblExcel.Size = new System.Drawing.Size(55, 15);
-            this.lblExcel.TabIndex = 40;
-            this.lblExcel.Text = "내보내기";
-            this.lblExcel.Click += new System.EventHandler(this.lblExcel_Click);
-            // 
-            // lblPrint
-            // 
-            this.lblPrint.AutoSize = true;
-            this.lblPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblPrint.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblPrint.Location = new System.Drawing.Point(36, 742);
-            this.lblPrint.Name = "lblPrint";
-            this.lblPrint.Size = new System.Drawing.Size(31, 15);
-            this.lblPrint.TabIndex = 44;
-            this.lblPrint.Text = "인쇄";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.lblTitle.Location = new System.Drawing.Point(18, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(128, 21);
-            this.lblTitle.TabIndex = 40;
-            this.lblTitle.Text = "▶ 생산진행현황";
-            // 
-            // lblDetail
-            // 
-            this.lblDetail.AutoSize = true;
-            this.lblDetail.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDetail.Location = new System.Drawing.Point(716, 33);
-            this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(60, 17);
-            this.lblDetail.TabIndex = 17;
-            this.lblDetail.Text = "상세검색";
-            // 
-            // textDetail
-            // 
-            this.textDetail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.textDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textDetail.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textDetail.Location = new System.Drawing.Point(778, 30);
-            this.textDetail.Name = "textDetail";
-            this.textDetail.Size = new System.Drawing.Size(132, 23);
-            this.textDetail.TabIndex = 18;
-            // 
-            // imgHelp
-            // 
-            this.imgHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgHelp.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\help3.png";
-            this.imgHelp.Location = new System.Drawing.Point(10, 8);
-            this.imgHelp.Name = "imgHelp";
-            this.imgHelp.Size = new System.Drawing.Size(16, 16);
-            this.imgHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgHelp.TabIndex = 40;
-            this.imgHelp.TabStop = false;
-            // 
-            // lblHelp
-            // 
-            this.lblHelp.AutoSize = true;
-            this.lblHelp.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblHelp.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblHelp.Location = new System.Drawing.Point(27, 10);
-            this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(217, 13);
-            this.lblHelp.TabIndex = 41;
-            this.lblHelp.Text = "최근 2개년만 표시됩니다. (그 외 수동기입)";
+            this.lblLoding.AutoSize = true;
+            this.lblLoding.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblLoding.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblLoding.Location = new System.Drawing.Point(374, 743);
+            this.lblLoding.Name = "lblLoding";
+            this.lblLoding.Size = new System.Drawing.Size(260, 13);
+            this.lblLoding.TabIndex = 42;
+            this.lblLoding.Text = "검색량이 많을 경우, 30초 이상 소요될 수 있습니다.";
             // 
             // Total
             // 
@@ -632,17 +645,17 @@
             this.Load += new System.EventHandler(this.Total_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelDrag.ResumeLayout(false);
             this.panelDrag.PerformLayout();
+            this.panelGridview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgExit)).EndInit();
-            this.panelGridview.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -691,5 +704,6 @@
         private System.Windows.Forms.Label lblDetail;
         private System.Windows.Forms.PictureBox imgHelp;
         private System.Windows.Forms.Label lblHelp;
+        private System.Windows.Forms.Label lblLoding;
     }
 }
