@@ -127,7 +127,6 @@
             this.dataGridViewSerial = new System.Windows.Forms.DataGridView();
             this.check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.imgSerialView = new System.Windows.Forms.PictureBox();
             this.panelDrag = new System.Windows.Forms.Panel();
@@ -1325,13 +1324,11 @@
             this.dataGridViewSerial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewSerial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.check,
-            this.No,
-            this.Serial});
+            this.No});
             this.dataGridViewSerial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewSerial.Location = new System.Drawing.Point(1, 1);
             this.dataGridViewSerial.MultiSelect = false;
             this.dataGridViewSerial.Name = "dataGridViewSerial";
-            this.dataGridViewSerial.ReadOnly = true;
             this.dataGridViewSerial.RowHeadersVisible = false;
             this.dataGridViewSerial.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -1340,7 +1337,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewSerial.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSerial.RowTemplate.Height = 23;
-            this.dataGridViewSerial.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridViewSerial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewSerial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSerial.Size = new System.Drawing.Size(155, 625);
             this.dataGridViewSerial.TabIndex = 45;
@@ -1351,7 +1348,6 @@
             this.check.HeaderText = "";
             this.check.MinimumWidth = 20;
             this.check.Name = "check";
-            this.check.ReadOnly = true;
             this.check.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.check.Width = 20;
             // 
@@ -1359,19 +1355,9 @@
             // 
             this.No.HeaderText = "";
             this.No.Name = "No";
-            this.No.ReadOnly = true;
             this.No.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.No.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.No.Width = 25;
-            // 
-            // Serial
-            // 
-            this.Serial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Serial.HeaderText = "Serial";
-            this.Serial.Name = "Serial";
-            this.Serial.ReadOnly = true;
-            this.Serial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Serial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // checkBox1
             // 
@@ -1447,6 +1433,7 @@
             // lblFinal
             // 
             this.lblFinal.AutoSize = true;
+            this.lblFinal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblFinal.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.lblFinal.Location = new System.Drawing.Point(94, 26);
@@ -1975,9 +1962,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.PictureBox imgSide;
         private System.Windows.Forms.ComboBox comboQuick;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn check;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Serial;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
@@ -2080,5 +2064,7 @@
         public System.Windows.Forms.Label lblColor2;
         public System.Windows.Forms.Label lblColor3;
         public System.Windows.Forms.Label lblColor4;
+        public System.Windows.Forms.DataGridViewCheckBoxColumn check;
+        public System.Windows.Forms.DataGridViewTextBoxColumn No;
     }
 }

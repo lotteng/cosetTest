@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace cosetTest
 {
@@ -41,9 +40,9 @@ namespace cosetTest
         private void Main_Load(object sender, EventArgs e)
         {
             panelTop.Visible = false;
-            panelSerial.Visible= false;
-            panelBoard.Visible= false;
-            panelFinal.Visible= false;
+            panelSerial.Visible = false;
+            panelBoard.Visible = false;
+            panelFinal.Visible = false;
 
 
             comboQuick.Items.Add("바로가기");
@@ -137,14 +136,14 @@ namespace cosetTest
 
         private void panelNavigation_MouseLeave(object sender, EventArgs e)
         {
-            timerNaviOpen.Stop();
-            timerNaviClose.Start();
+            //imerNaviOpen.Stop();
+            //timerNaviClose.Start();
         }
         private void timerNaviOpen_Tick(object sender, EventArgs e)
         {
             timerNaviClose.Stop();
 
-            
+
             if (_posSliding >= MAX_SLIDING_HEIGHT)
             {
                 timerNaviOpen.Stop();
@@ -161,7 +160,7 @@ namespace cosetTest
         {
             timerNaviOpen.Stop();
 
-            
+
             if (_posSliding <= MIN_SLIDING_HEIGHT)
             {
                 timerNaviClose.Stop();
@@ -204,6 +203,7 @@ namespace cosetTest
         }
 
 
+
         // final (Test Process)
         private void lblFinal_Click(object sender, EventArgs e)
         {
@@ -212,17 +212,18 @@ namespace cosetTest
             if (fc != null)
             {
                 fc.Close();
-
-                Side FormSide = new Side();
+            }
+                Side FormSide = new Side(this);
 
                 FormSide.StartPosition = FormStartPosition.Manual;
                 FormSide.Location = new System.Drawing.Point(this.Location.X + 1000, this.Location.Y);
                 FormSide.Show();
 
                 imgSide.Image = Properties.Resources.arrow_bck;
-            }
+            
 
         }
+
         // side
         private void imgSide_Click(object sender, EventArgs e)
         {
@@ -231,15 +232,16 @@ namespace cosetTest
             Form fc = System.Windows.Forms.Application.OpenForms["Side"];
             if (fc != null)
             {
-                fc.Close();
+                //fc.Close();
+                fc.Hide();
 
                 imgSide.Image = Properties.Resources.arrow_nxt;
             }
 
             else
             {
-                Side FormSide = new Side();
-                
+                Side FormSide = new Side(this);
+
                 FormSide.StartPosition = FormStartPosition.Manual;
                 FormSide.Location = new System.Drawing.Point(this.Location.X + 1000, this.Location.Y);
                 FormSide.Show();

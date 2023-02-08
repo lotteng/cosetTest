@@ -17,17 +17,17 @@ namespace cosetTest
 
 
         // Global instance
-        public Main FormMain = new Main();
+        Main FormMain = null;            //public Main FormMain = new Main();
 
         // drag & drop
         private Point point = new Point();
 
 
 
-        public Side()
+        public Side(Main FormMain)
         {
             InitializeComponent();
-
+            this.FormMain = FormMain;
         }
 
 
@@ -155,20 +155,22 @@ namespace cosetTest
                 FormMain.dataGridViewSerial.DataSource = DS.Tables[0];    //dataGridView1.DataSource = DS.Tables[0];
 
 
-
-
-
                 // rows index setting
 
                 for (int i = 0; i < FormMain.dataGridViewSerial.Rows.Count; i++)
                 {
-                    FormMain.dataGridViewSerial.Rows[i].HeaderCell.Value = false; // dataGridView1.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                    FormMain.dataGridViewSerial.Rows[i].Cells[1].Value = i+1 ;
 
                 }
 
                 // rows count
                 FormMain.lblColor0.Text = FormMain.dataGridViewSerial.Rows.Count.ToString();
 
+
+                // Columns ReadOnly
+                FormMain.dataGridViewSerial.Columns[0].ReadOnly = false;
+                FormMain.dataGridViewSerial.Columns[1].ReadOnly = true;
+                FormMain.dataGridViewSerial.Columns[2].ReadOnly = true;
 
 
                 connection.Close();

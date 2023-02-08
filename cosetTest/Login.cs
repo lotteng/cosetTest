@@ -143,9 +143,7 @@ namespace cosetTest
 
                 if (login_status == 1)
                 {
-                    //MessageBox.Show("환영합니다");
-
-
+                    
                     this.Hide();
                     
                     Main FormMain = new Main();
