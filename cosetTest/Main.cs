@@ -16,12 +16,13 @@ namespace cosetTest
     {
 
         Total FormTotal = new Total();
+        Form fc = System.Windows.Forms.Application.OpenForms["Side"];
 
         private System.Drawing.Point point = new System.Drawing.Point(); // drag & drop
 
 
         // sliding menu (navigation bar)
-        const int MAX_SLIDING_HEIGHT = 170;
+        const int MAX_SLIDING_HEIGHT = 150;
         const int MIN_SLIDING_HEIGHT = 3;
         int SLIDING_LOCATION;
 
@@ -45,8 +46,30 @@ namespace cosetTest
             panelFinal.Visible = false;
 
 
+            // 조회용
             comboQuick.Items.Add("바로가기");
-            comboQuick.Items.Add("생산진행현황");
+            comboQuick.Items.Add("────────────");
+            comboQuick.Items.Add("생산진행현황");            
+            comboQuick.Items.Add("정보조회"); //자재 제품 BOM
+            comboQuick.Items.Add("3SPT FBG 조회");
+            comboQuick.Items.Add("────────────");
+            comboQuick.Items.Add("수입검사");
+            comboQuick.Items.Add("구매관리");
+            comboQuick.Items.Add("자재관리");
+            comboQuick.Items.Add("생산계획");
+            comboQuick.Items.Add("────────────");
+            comboQuick.Items.Add("조립-생산1팀");
+            comboQuick.Items.Add("검사-생산1팀");
+            comboQuick.Items.Add("파이버-생산1팀");
+            comboQuick.Items.Add("────────────");
+            comboQuick.Items.Add("조립-생산2팀");
+            comboQuick.Items.Add("검사-생산2팀");
+            
+            
+            
+
+
+
             if (comboQuick.Items.Count > 0) comboQuick.SelectedIndex = 0;
 
 
@@ -77,32 +100,40 @@ namespace cosetTest
 
         // sliding menu (navigation bar)
 
-        private void label16_MouseHover(object sender, EventArgs e)
+        private void lblNavi1_MouseHover(object sender, EventArgs e)
         {
+            lblNavisub1.Visible = true;
+
             timerNaviOpen.Start();
             panelNaviMove.BackColor = SystemColors.ActiveCaption;
             //timerNaviMove.Start();
-            SLIDING_LOCATION = 8;
+            SLIDING_LOCATION = 20;
 
             panelNaviMove.Location = new System.Drawing.Point(SLIDING_LOCATION, 91);
         }
-        private void label16_MouseLeave(object sender, EventArgs e)
+        private void lblNavi1_MouseLeave(object sender, EventArgs e)
         {
+            lblNavisub1.Visible = false;
+
             panelNaviMove.BackColor = Color.Gainsboro;
         }
 
-        private void label13_MouseHover(object sender, EventArgs e)
+        private void lblNavi2_MouseHover(object sender, EventArgs e)
         {
+            lblNavisub2.Visible = true;
+
             timerNaviOpen.Start();
             panelNaviMove.BackColor = SystemColors.ActiveCaption;
             //timerNaviMove.Start();
-            SLIDING_LOCATION = 88;
+            SLIDING_LOCATION = 120;
 
             panelNaviMove.Location = new System.Drawing.Point(SLIDING_LOCATION, 91);
         }
 
-        private void label13_MouseLeave(object sender, EventArgs e)
+        private void lblNavi2_MouseLeave(object sender, EventArgs e)
         {
+            lblNavisub2.Visible = false;
+
             panelNaviMove.BackColor = Color.Gainsboro;
         }
 
@@ -208,7 +239,7 @@ namespace cosetTest
         private void lblFinal_Click(object sender, EventArgs e)
         {
             // Form state(open) check
-            Form fc = System.Windows.Forms.Application.OpenForms["Side"];
+
             if (fc != null)
             {
                 fc.Close();
@@ -229,7 +260,8 @@ namespace cosetTest
         {
 
             // Form state(open) check
-            Form fc = System.Windows.Forms.Application.OpenForms["Side"];
+
+
             if (fc != null)
             {
                 //fc.Close();
@@ -248,6 +280,25 @@ namespace cosetTest
 
                 imgSide.Image = Properties.Resources.arrow_bck;
             }
+
+            //if (fc != null)
+            //{
+            //    //fc.Close();
+            //    fc.Hide();
+
+            //    imgSide.Image = Properties.Resources.arrow_nxt;
+            //}
+
+            //else
+            //{
+            //    Side FormSide = new Side(this);
+
+            //    FormSide.StartPosition = FormStartPosition.Manual;
+            //    FormSide.Location = new System.Drawing.Point(this.Location.X + 1000, this.Location.Y);
+            //    FormSide.Show();
+
+            //    imgSide.Image = Properties.Resources.arrow_bck;
+            //}
         }
 
         private void imgSide_MouseHover(object sender, EventArgs e)

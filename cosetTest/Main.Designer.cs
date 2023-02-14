@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelBoard = new System.Windows.Forms.Panel();
             this.panelFinal = new System.Windows.Forms.Panel();
-            this.imgResetAll = new System.Windows.Forms.PictureBox();
+            this.imgReload = new System.Windows.Forms.PictureBox();
             this.imgRemark = new System.Windows.Forms.PictureBox();
             this.panel0 = new System.Windows.Forms.Panel();
             this.label66 = new System.Windows.Forms.Label();
@@ -154,12 +154,11 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.comboQuick = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblNavi1 = new System.Windows.Forms.Label();
+            this.lblNavi5 = new System.Windows.Forms.Label();
+            this.lblNavi4 = new System.Windows.Forms.Label();
+            this.lblNavi3 = new System.Windows.Forms.Label();
+            this.lblNavi2 = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             this.imgSetting = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -170,9 +169,34 @@
             this.timerNaviClose = new System.Windows.Forms.Timer(this.components);
             this.timerNaviMove = new System.Windows.Forms.Timer(this.components);
             this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.lblMenu4 = new System.Windows.Forms.Label();
+            this.lblMenu6 = new System.Windows.Forms.Label();
+            this.lblMenu5 = new System.Windows.Forms.Label();
+            this.lblMenu13 = new System.Windows.Forms.Label();
+            this.lblMenu12 = new System.Windows.Forms.Label();
+            this.lblMenu11 = new System.Windows.Forms.Label();
+            this.lblMenu10 = new System.Windows.Forms.Label();
+            this.lblMenu15 = new System.Windows.Forms.Label();
+            this.lblMenu14 = new System.Windows.Forms.Label();
+            this.lblMenu20 = new System.Windows.Forms.Label();
+            this.lblMenu19 = new System.Windows.Forms.Label();
+            this.lblMenu18 = new System.Windows.Forms.Label();
+            this.lblMenu17 = new System.Windows.Forms.Label();
+            this.lblMenu16 = new System.Windows.Forms.Label();
+            this.lblMenu2 = new System.Windows.Forms.Label();
+            this.lblMenu9 = new System.Windows.Forms.Label();
+            this.lblMenu8 = new System.Windows.Forms.Label();
+            this.lblMenu7 = new System.Windows.Forms.Label();
+            this.lblMenu3 = new System.Windows.Forms.Label();
+            this.lblNavisub2 = new System.Windows.Forms.Label();
+            this.lblNavisub1 = new System.Windows.Forms.Label();
+            this.lblNavisub3 = new System.Windows.Forms.Label();
+            this.lblNavisub4 = new System.Windows.Forms.Label();
+            this.lblNavisub5 = new System.Windows.Forms.Label();
+            this.lblMenu21 = new System.Windows.Forms.Label();
             this.panelBoard.SuspendLayout();
             this.panelFinal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgResetAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgReload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgRemark)).BeginInit();
             this.panel0.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -213,7 +237,6 @@
             // panelFinal
             // 
             this.panelFinal.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelFinal.Controls.Add(this.imgResetAll);
             this.panelFinal.Controls.Add(this.imgRemark);
             this.panelFinal.Controls.Add(this.panel0);
             this.panelFinal.Controls.Add(this.btnCancel);
@@ -231,16 +254,16 @@
             this.panelFinal.Size = new System.Drawing.Size(782, 515);
             this.panelFinal.TabIndex = 45;
             // 
-            // imgResetAll
+            // imgReload
             // 
-            this.imgResetAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgResetAll.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reset.png";
-            this.imgResetAll.Location = new System.Drawing.Point(415, 490);
-            this.imgResetAll.Name = "imgResetAll";
-            this.imgResetAll.Size = new System.Drawing.Size(17, 17);
-            this.imgResetAll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgResetAll.TabIndex = 128;
-            this.imgResetAll.TabStop = false;
+            this.imgReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgReload.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reload.png";
+            this.imgReload.Location = new System.Drawing.Point(34, 1);
+            this.imgReload.Name = "imgReload";
+            this.imgReload.Size = new System.Drawing.Size(16, 16);
+            this.imgReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgReload.TabIndex = 128;
+            this.imgReload.TabStop = false;
             // 
             // imgRemark
             // 
@@ -1092,6 +1115,7 @@
             // 
             // panelSerial
             // 
+            this.panelSerial.Controls.Add(this.imgReload);
             this.panelSerial.Controls.Add(this.panelHelp);
             this.panelSerial.Controls.Add(this.lblSubmit);
             this.panelSerial.Controls.Add(this.lblDefect);
@@ -1104,7 +1128,7 @@
             this.panelSerial.Controls.Add(this.imgSerialView);
             this.panelSerial.Location = new System.Drawing.Point(7, 110);
             this.panelSerial.Name = "panelSerial";
-            this.panelSerial.Size = new System.Drawing.Size(180, 680);
+            this.panelSerial.Size = new System.Drawing.Size(180, 673);
             this.panelSerial.TabIndex = 40;
             // 
             // panelHelp
@@ -1276,7 +1300,7 @@
             this.lblSerialView.AutoSize = true;
             this.lblSerialView.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSerialView.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSerialView.Location = new System.Drawing.Point(33, 658);
+            this.lblSerialView.Location = new System.Drawing.Point(33, 657);
             this.lblSerialView.Name = "lblSerialView";
             this.lblSerialView.Size = new System.Drawing.Size(55, 15);
             this.lblSerialView.TabIndex = 84;
@@ -1338,7 +1362,7 @@
             this.dataGridViewSerial.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSerial.RowTemplate.Height = 23;
             this.dataGridViewSerial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewSerial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSerial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewSerial.Size = new System.Drawing.Size(155, 625);
             this.dataGridViewSerial.TabIndex = 45;
             // 
@@ -1384,6 +1408,11 @@
             // panelDrag
             // 
             this.panelDrag.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDrag.Controls.Add(this.lblNavisub5);
+            this.panelDrag.Controls.Add(this.lblNavisub4);
+            this.panelDrag.Controls.Add(this.lblNavisub3);
+            this.panelDrag.Controls.Add(this.lblNavisub1);
+            this.panelDrag.Controls.Add(this.lblNavisub2);
             this.panelDrag.Controls.Add(this.panelNaviMove);
             this.panelDrag.Controls.Add(this.panelNavigation);
             this.panelDrag.Controls.Add(this.panelSide);
@@ -1391,12 +1420,11 @@
             this.panelDrag.Controls.Add(this.panelTop);
             this.panelDrag.Controls.Add(this.comboQuick);
             this.panelDrag.Controls.Add(this.panelSerial);
-            this.panelDrag.Controls.Add(this.label16);
-            this.panelDrag.Controls.Add(this.label17);
-            this.panelDrag.Controls.Add(this.label18);
-            this.panelDrag.Controls.Add(this.label15);
-            this.panelDrag.Controls.Add(this.label14);
-            this.panelDrag.Controls.Add(this.label13);
+            this.panelDrag.Controls.Add(this.lblNavi1);
+            this.panelDrag.Controls.Add(this.lblNavi5);
+            this.panelDrag.Controls.Add(this.lblNavi4);
+            this.panelDrag.Controls.Add(this.lblNavi3);
+            this.panelDrag.Controls.Add(this.lblNavi2);
             this.panelDrag.Controls.Add(this.lblMessage);
             this.panelDrag.Controls.Add(this.imgSetting);
             this.panelDrag.Controls.Add(this.label2);
@@ -1415,7 +1443,7 @@
             // panelNaviMove
             // 
             this.panelNaviMove.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelNaviMove.Location = new System.Drawing.Point(8, 91);
+            this.panelNaviMove.Location = new System.Drawing.Point(20, 91);
             this.panelNaviMove.Name = "panelNaviMove";
             this.panelNaviMove.Size = new System.Drawing.Size(80, 3);
             this.panelNaviMove.TabIndex = 58;
@@ -1423,24 +1451,45 @@
             // panelNavigation
             // 
             this.panelNavigation.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panelNavigation.Controls.Add(this.lblMenu21);
+            this.panelNavigation.Controls.Add(this.lblMenu3);
+            this.panelNavigation.Controls.Add(this.lblMenu9);
+            this.panelNavigation.Controls.Add(this.lblMenu8);
+            this.panelNavigation.Controls.Add(this.lblMenu7);
+            this.panelNavigation.Controls.Add(this.lblMenu2);
+            this.panelNavigation.Controls.Add(this.lblMenu20);
+            this.panelNavigation.Controls.Add(this.lblMenu19);
+            this.panelNavigation.Controls.Add(this.lblMenu18);
+            this.panelNavigation.Controls.Add(this.lblMenu17);
+            this.panelNavigation.Controls.Add(this.lblMenu16);
+            this.panelNavigation.Controls.Add(this.lblMenu15);
+            this.panelNavigation.Controls.Add(this.lblMenu14);
+            this.panelNavigation.Controls.Add(this.lblMenu13);
+            this.panelNavigation.Controls.Add(this.lblMenu12);
+            this.panelNavigation.Controls.Add(this.lblMenu11);
+            this.panelNavigation.Controls.Add(this.lblMenu10);
+            this.panelNavigation.Controls.Add(this.lblMenu6);
+            this.panelNavigation.Controls.Add(this.lblMenu5);
+            this.panelNavigation.Controls.Add(this.lblMenu4);
             this.panelNavigation.Controls.Add(this.lblFinal);
             this.panelNavigation.Location = new System.Drawing.Point(8, 91);
             this.panelNavigation.Name = "panelNavigation";
-            this.panelNavigation.Size = new System.Drawing.Size(980, 3);
+            this.panelNavigation.Size = new System.Drawing.Size(980, 150);
             this.panelNavigation.TabIndex = 47;
             this.panelNavigation.MouseLeave += new System.EventHandler(this.panelNavigation_MouseLeave);
             // 
             // lblFinal
             // 
-            this.lblFinal.AutoSize = true;
             this.lblFinal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblFinal.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblFinal.Location = new System.Drawing.Point(94, 26);
+            this.lblFinal.Location = new System.Drawing.Point(24, 27);
+            this.lblFinal.Margin = new System.Windows.Forms.Padding(8);
             this.lblFinal.Name = "lblFinal";
-            this.lblFinal.Size = new System.Drawing.Size(35, 17);
+            this.lblFinal.Size = new System.Drawing.Size(120, 18);
             this.lblFinal.TabIndex = 59;
-            this.lblFinal.Text = "Final";
+            this.lblFinal.Text = "Label";
+            this.lblFinal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblFinal.Click += new System.EventHandler(this.lblFinal_Click);
             // 
             // panelSide
@@ -1695,75 +1744,64 @@
             this.comboQuick.SelectedIndexChanged += new System.EventHandler(this.comboQuick_SelectedIndexChanged);
             this.comboQuick.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboQuick_KeyDown);
             // 
-            // label16
+            // lblNavi1
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label16.Location = new System.Drawing.Point(35, 71);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 20);
-            this.label16.TabIndex = 57;
-            this.label16.Text = "★";
-            this.label16.MouseLeave += new System.EventHandler(this.label16_MouseLeave);
-            this.label16.MouseHover += new System.EventHandler(this.label16_MouseHover);
+            this.lblNavi1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavi1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNavi1.Location = new System.Drawing.Point(8, 71);
+            this.lblNavi1.Name = "lblNavi1";
+            this.lblNavi1.Size = new System.Drawing.Size(100, 20);
+            this.lblNavi1.TabIndex = 57;
+            this.lblNavi1.Text = "★";
+            this.lblNavi1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavi1.MouseLeave += new System.EventHandler(this.lblNavi1_MouseLeave);
+            this.lblNavi1.MouseHover += new System.EventHandler(this.lblNavi1_MouseHover);
             // 
-            // label17
+            // lblNavi5
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label17.Location = new System.Drawing.Point(421, 71);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 20);
-            this.label17.TabIndex = 56;
-            this.label17.Text = "EXTRA";
+            this.lblNavi5.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavi5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNavi5.Location = new System.Drawing.Point(432, 71);
+            this.lblNavi5.Name = "lblNavi5";
+            this.lblNavi5.Size = new System.Drawing.Size(100, 20);
+            this.lblNavi5.TabIndex = 56;
+            this.lblNavi5.Text = "Extension";
+            this.lblNavi5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label18
+            // lblNavi4
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label18.Location = new System.Drawing.Point(337, 71);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 20);
-            this.label18.TabIndex = 55;
-            this.label18.Text = "DEFECT";
+            this.lblNavi4.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavi4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNavi4.Location = new System.Drawing.Point(326, 71);
+            this.lblNavi4.Name = "lblNavi4";
+            this.lblNavi4.Size = new System.Drawing.Size(100, 20);
+            this.lblNavi4.TabIndex = 55;
+            this.lblNavi4.Text = "Defect";
+            this.lblNavi4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label15
+            // lblNavi3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label15.Location = new System.Drawing.Point(263, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(50, 20);
-            this.label15.TabIndex = 54;
-            this.label15.Text = "BOSA";
+            this.lblNavi3.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavi3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNavi3.Location = new System.Drawing.Point(220, 71);
+            this.lblNavi3.Name = "lblNavi3";
+            this.lblNavi3.Size = new System.Drawing.Size(100, 20);
+            this.lblNavi3.TabIndex = 53;
+            this.lblNavi3.Text = "Inspection";
+            this.lblNavi3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label14
+            // lblNavi2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label14.Location = new System.Drawing.Point(187, 71);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 20);
-            this.label14.TabIndex = 53;
-            this.label14.Text = "ROSA";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.label13.Location = new System.Drawing.Point(102, 71);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 20);
-            this.label13.TabIndex = 52;
-            this.label13.Text = "TOSA";
-            this.label13.MouseLeave += new System.EventHandler(this.label13_MouseLeave);
-            this.label13.MouseHover += new System.EventHandler(this.label13_MouseHover);
+            this.lblNavi2.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavi2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblNavi2.Location = new System.Drawing.Point(114, 71);
+            this.lblNavi2.Name = "lblNavi2";
+            this.lblNavi2.Size = new System.Drawing.Size(100, 20);
+            this.lblNavi2.TabIndex = 52;
+            this.lblNavi2.Text = "Assembly";
+            this.lblNavi2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavi2.MouseLeave += new System.EventHandler(this.lblNavi2_MouseLeave);
+            this.lblNavi2.MouseHover += new System.EventHandler(this.lblNavi2_MouseHover);
             // 
             // lblMessage
             // 
@@ -1861,6 +1899,325 @@
             this.imgLogo.TabIndex = 40;
             this.imgLogo.TabStop = false;
             // 
+            // lblMenu4
+            // 
+            this.lblMenu4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu4.Location = new System.Drawing.Point(160, 27);
+            this.lblMenu4.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu4.Name = "lblMenu4";
+            this.lblMenu4.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu4.TabIndex = 60;
+            this.lblMenu4.Text = "OSA";
+            this.lblMenu4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu6
+            // 
+            this.lblMenu6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu6.Location = new System.Drawing.Point(161, 95);
+            this.lblMenu6.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu6.Name = "lblMenu6";
+            this.lblMenu6.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu6.TabIndex = 62;
+            this.lblMenu6.Text = "Wire Bonding";
+            this.lblMenu6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu5
+            // 
+            this.lblMenu5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu5.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu5.Location = new System.Drawing.Point(160, 61);
+            this.lblMenu5.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu5.Name = "lblMenu5";
+            this.lblMenu5.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu5.TabIndex = 61;
+            this.lblMenu5.Text = "PGK TEC OSA";
+            this.lblMenu5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu13
+            // 
+            this.lblMenu13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu13.Location = new System.Drawing.Point(568, 27);
+            this.lblMenu13.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu13.Name = "lblMenu13";
+            this.lblMenu13.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu13.TabIndex = 66;
+            this.lblMenu13.Text = "ReAlign2";
+            this.lblMenu13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu12
+            // 
+            this.lblMenu12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu12.Location = new System.Drawing.Point(433, 95);
+            this.lblMenu12.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu12.Name = "lblMenu12";
+            this.lblMenu12.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu12.TabIndex = 65;
+            this.lblMenu12.Text = "Stress";
+            this.lblMenu12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu11
+            // 
+            this.lblMenu11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu11.Location = new System.Drawing.Point(432, 61);
+            this.lblMenu11.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu11.Name = "lblMenu11";
+            this.lblMenu11.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu11.TabIndex = 64;
+            this.lblMenu11.Text = "Window";
+            this.lblMenu11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu10
+            // 
+            this.lblMenu10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu10.Location = new System.Drawing.Point(432, 27);
+            this.lblMenu10.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu10.Name = "lblMenu10";
+            this.lblMenu10.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu10.TabIndex = 63;
+            this.lblMenu10.Text = "ReAlign1";
+            this.lblMenu10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu15
+            // 
+            this.lblMenu15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu15.Location = new System.Drawing.Point(569, 95);
+            this.lblMenu15.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu15.Name = "lblMenu15";
+            this.lblMenu15.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu15.TabIndex = 68;
+            this.lblMenu15.Text = "Seam Sealing";
+            this.lblMenu15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu14
+            // 
+            this.lblMenu14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu14.Location = new System.Drawing.Point(568, 61);
+            this.lblMenu14.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu14.Name = "lblMenu14";
+            this.lblMenu14.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu14.TabIndex = 67;
+            this.lblMenu14.Text = "Visual Inspection";
+            this.lblMenu14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu20
+            // 
+            this.lblMenu20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu20.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu20.Location = new System.Drawing.Point(840, 61);
+            this.lblMenu20.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu20.Name = "lblMenu20";
+            this.lblMenu20.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu20.TabIndex = 73;
+            this.lblMenu20.Text = "PRC";
+            this.lblMenu20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu19
+            // 
+            this.lblMenu19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu19.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu19.Location = new System.Drawing.Point(840, 27);
+            this.lblMenu19.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu19.Name = "lblMenu19";
+            this.lblMenu19.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu19.TabIndex = 72;
+            this.lblMenu19.Text = "FLA";
+            this.lblMenu19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu18
+            // 
+            this.lblMenu18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu18.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu18.Location = new System.Drawing.Point(705, 95);
+            this.lblMenu18.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu18.Name = "lblMenu18";
+            this.lblMenu18.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu18.TabIndex = 71;
+            this.lblMenu18.Text = "SCTPB";
+            this.lblMenu18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu17
+            // 
+            this.lblMenu17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu17.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu17.Location = new System.Drawing.Point(704, 61);
+            this.lblMenu17.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu17.Name = "lblMenu17";
+            this.lblMenu17.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu17.TabIndex = 70;
+            this.lblMenu17.Text = "PPB";
+            this.lblMenu17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu16
+            // 
+            this.lblMenu16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu16.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu16.Location = new System.Drawing.Point(704, 27);
+            this.lblMenu16.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu16.Name = "lblMenu16";
+            this.lblMenu16.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu16.TabIndex = 69;
+            this.lblMenu16.Text = "PCB";
+            this.lblMenu16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu2
+            // 
+            this.lblMenu2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu2.Location = new System.Drawing.Point(24, 61);
+            this.lblMenu2.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu2.Name = "lblMenu2";
+            this.lblMenu2.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu2.TabIndex = 75;
+            this.lblMenu2.Text = "Burn-in";
+            this.lblMenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu9
+            // 
+            this.lblMenu9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu9.Location = new System.Drawing.Point(297, 95);
+            this.lblMenu9.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu9.Name = "lblMenu9";
+            this.lblMenu9.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu9.TabIndex = 78;
+            this.lblMenu9.Text = "Welding";
+            this.lblMenu9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu8
+            // 
+            this.lblMenu8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu8.Location = new System.Drawing.Point(296, 61);
+            this.lblMenu8.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu8.Name = "lblMenu8";
+            this.lblMenu8.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu8.TabIndex = 77;
+            this.lblMenu8.Text = "Glue";
+            this.lblMenu8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu7
+            // 
+            this.lblMenu7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu7.Location = new System.Drawing.Point(296, 27);
+            this.lblMenu7.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu7.Name = "lblMenu7";
+            this.lblMenu7.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu7.TabIndex = 76;
+            this.lblMenu7.Text = "Function";
+            this.lblMenu7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMenu3
+            // 
+            this.lblMenu3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu3.Location = new System.Drawing.Point(24, 95);
+            this.lblMenu3.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu3.Name = "lblMenu3";
+            this.lblMenu3.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu3.TabIndex = 79;
+            this.lblMenu3.Text = "Diagram Bonding";
+            this.lblMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNavisub2
+            // 
+            this.lblNavisub2.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavisub2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNavisub2.Location = new System.Drawing.Point(115, 59);
+            this.lblNavisub2.Name = "lblNavisub2";
+            this.lblNavisub2.Size = new System.Drawing.Size(100, 15);
+            this.lblNavisub2.TabIndex = 84;
+            this.lblNavisub2.Text = "조립";
+            this.lblNavisub2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavisub2.Visible = false;
+            // 
+            // lblNavisub1
+            // 
+            this.lblNavisub1.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavisub1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNavisub1.Location = new System.Drawing.Point(9, 59);
+            this.lblNavisub1.Name = "lblNavisub1";
+            this.lblNavisub1.Size = new System.Drawing.Size(100, 15);
+            this.lblNavisub1.TabIndex = 129;
+            this.lblNavisub1.Text = "즐겨찾기";
+            this.lblNavisub1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavisub1.Visible = false;
+            // 
+            // lblNavisub3
+            // 
+            this.lblNavisub3.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavisub3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNavisub3.Location = new System.Drawing.Point(221, 59);
+            this.lblNavisub3.Name = "lblNavisub3";
+            this.lblNavisub3.Size = new System.Drawing.Size(100, 15);
+            this.lblNavisub3.TabIndex = 130;
+            this.lblNavisub3.Text = "검사";
+            this.lblNavisub3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavisub3.Visible = false;
+            // 
+            // lblNavisub4
+            // 
+            this.lblNavisub4.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavisub4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNavisub4.Location = new System.Drawing.Point(327, 59);
+            this.lblNavisub4.Name = "lblNavisub4";
+            this.lblNavisub4.Size = new System.Drawing.Size(100, 15);
+            this.lblNavisub4.TabIndex = 131;
+            this.lblNavisub4.Text = "이상처리";
+            this.lblNavisub4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavisub4.Visible = false;
+            // 
+            // lblNavisub5
+            // 
+            this.lblNavisub5.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNavisub5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNavisub5.Location = new System.Drawing.Point(433, 59);
+            this.lblNavisub5.Name = "lblNavisub5";
+            this.lblNavisub5.Size = new System.Drawing.Size(100, 15);
+            this.lblNavisub5.TabIndex = 132;
+            this.lblNavisub5.Text = "추가기능";
+            this.lblNavisub5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavisub5.Visible = false;
+            // 
+            // lblMenu21
+            // 
+            this.lblMenu21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenu21.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMenu21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.lblMenu21.Location = new System.Drawing.Point(841, 95);
+            this.lblMenu21.Margin = new System.Windows.Forms.Padding(8);
+            this.lblMenu21.Name = "lblMenu21";
+            this.lblMenu21.Size = new System.Drawing.Size(120, 18);
+            this.lblMenu21.TabIndex = 80;
+            this.lblMenu21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1883,7 +2240,7 @@
             this.panelBoard.ResumeLayout(false);
             this.panelFinal.ResumeLayout(false);
             this.panelFinal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgResetAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgReload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgRemark)).EndInit();
             this.panel0.ResumeLayout(false);
             this.panel0.PerformLayout();
@@ -1908,7 +2265,6 @@
             this.panelDrag.ResumeLayout(false);
             this.panelDrag.PerformLayout();
             this.panelNavigation.ResumeLayout(false);
-            this.panelNavigation.PerformLayout();
             this.panelSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgSide)).EndInit();
             this.panelTop.ResumeLayout(false);
@@ -1947,12 +2303,11 @@
         private System.Windows.Forms.PictureBox imgSetting;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelNavigation;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblNavi1;
+        private System.Windows.Forms.Label lblNavi5;
+        private System.Windows.Forms.Label lblNavi4;
+        private System.Windows.Forms.Label lblNavi3;
+        private System.Windows.Forms.Label lblNavi2;
         private System.Windows.Forms.Timer timerNaviOpen;
         private System.Windows.Forms.Timer timerNaviClose;
         private System.Windows.Forms.Panel panelNaviMove;
@@ -2049,7 +2404,7 @@
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.PictureBox imgResetAll;
+        private System.Windows.Forms.PictureBox imgReload;
         private System.Windows.Forms.Panel panelSide;
 
         // Form Side 에서 접근하기 위함
@@ -2066,5 +2421,30 @@
         public System.Windows.Forms.Label lblColor4;
         public System.Windows.Forms.DataGridViewCheckBoxColumn check;
         public System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.Label lblMenu15;
+        private System.Windows.Forms.Label lblMenu14;
+        private System.Windows.Forms.Label lblMenu13;
+        private System.Windows.Forms.Label lblMenu12;
+        private System.Windows.Forms.Label lblMenu11;
+        private System.Windows.Forms.Label lblMenu10;
+        private System.Windows.Forms.Label lblMenu6;
+        private System.Windows.Forms.Label lblMenu5;
+        private System.Windows.Forms.Label lblMenu4;
+        private System.Windows.Forms.Label lblMenu3;
+        private System.Windows.Forms.Label lblMenu9;
+        private System.Windows.Forms.Label lblMenu8;
+        private System.Windows.Forms.Label lblMenu7;
+        private System.Windows.Forms.Label lblMenu2;
+        private System.Windows.Forms.Label lblMenu20;
+        private System.Windows.Forms.Label lblMenu19;
+        private System.Windows.Forms.Label lblMenu18;
+        private System.Windows.Forms.Label lblMenu17;
+        private System.Windows.Forms.Label lblMenu16;
+        private System.Windows.Forms.Label lblNavisub5;
+        private System.Windows.Forms.Label lblNavisub4;
+        private System.Windows.Forms.Label lblNavisub3;
+        private System.Windows.Forms.Label lblNavisub1;
+        private System.Windows.Forms.Label lblNavisub2;
+        private System.Windows.Forms.Label lblMenu21;
     }
 }
