@@ -35,10 +35,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Total));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.imgHelp = new System.Windows.Forms.PictureBox();
             this.lblHelp = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnYear = new System.Windows.Forms.Button();
+            this.imgSearch = new System.Windows.Forms.PictureBox();
             this.comboProgress = new System.Windows.Forms.ComboBox();
+            this.imgReset = new System.Windows.Forms.PictureBox();
             this.comboTeam = new System.Windows.Forms.ComboBox();
             this.btn6Month = new System.Windows.Forms.Button();
             this.lblProcess = new System.Windows.Forms.Label();
@@ -63,31 +66,36 @@
             this.lblRequest = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelDrag = new System.Windows.Forms.Panel();
+            this.lblLoding = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblPrint = new System.Windows.Forms.Label();
             this.lblExcel = new System.Windows.Forms.Label();
+            this.imgPrint = new System.Windows.Forms.PictureBox();
+            this.imgExcel = new System.Windows.Forms.PictureBox();
             this.panelGridview = new System.Windows.Forms.Panel();
             this.lblSelected = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
-            this.imgPrint = new System.Windows.Forms.PictureBox();
-            this.imgExcel = new System.Windows.Forms.PictureBox();
-            this.imgHelp = new System.Windows.Forms.PictureBox();
-            this.imgSearch = new System.Windows.Forms.PictureBox();
-            this.imgReset = new System.Windows.Forms.PictureBox();
             this.imgMini = new System.Windows.Forms.PictureBox();
             this.imgExit = new System.Windows.Forms.PictureBox();
-            this.lblLoding = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelDrag.SuspendLayout();
-            this.panelGridview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgReset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelDrag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).BeginInit();
+            this.panelGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgExit)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -127,6 +135,17 @@
             this.panelTop.Size = new System.Drawing.Size(984, 110);
             this.panelTop.TabIndex = 0;
             // 
+            // imgHelp
+            // 
+            this.imgHelp.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.imgHelp.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\help3.png";
+            this.imgHelp.Location = new System.Drawing.Point(10, 8);
+            this.imgHelp.Name = "imgHelp";
+            this.imgHelp.Size = new System.Drawing.Size(16, 16);
+            this.imgHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgHelp.TabIndex = 40;
+            this.imgHelp.TabStop = false;
+            // 
             // lblHelp
             // 
             this.lblHelp.AutoSize = true;
@@ -158,6 +177,18 @@
             this.btnYear.Text = "1년";
             this.btnYear.UseVisualStyleBackColor = true;
             // 
+            // imgSearch
+            // 
+            this.imgSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgSearch.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\search.png";
+            this.imgSearch.Location = new System.Drawing.Point(952, 32);
+            this.imgSearch.Name = "imgSearch";
+            this.imgSearch.Size = new System.Drawing.Size(18, 18);
+            this.imgSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgSearch.TabIndex = 38;
+            this.imgSearch.TabStop = false;
+            this.imgSearch.Click += new System.EventHandler(this.imgSearch_Click);
+            // 
             // comboProgress
             // 
             this.comboProgress.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -166,6 +197,18 @@
             this.comboProgress.Name = "comboProgress";
             this.comboProgress.Size = new System.Drawing.Size(166, 23);
             this.comboProgress.TabIndex = 27;
+            // 
+            // imgReset
+            // 
+            this.imgReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgReset.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reset.png";
+            this.imgReset.Location = new System.Drawing.Point(924, 33);
+            this.imgReset.Name = "imgReset";
+            this.imgReset.Size = new System.Drawing.Size(17, 17);
+            this.imgReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgReset.TabIndex = 37;
+            this.imgReset.TabStop = false;
+            this.imgReset.Click += new System.EventHandler(this.imgReset_Click);
             // 
             // comboTeam
             // 
@@ -447,6 +490,7 @@
             // panelDrag
             // 
             this.panelDrag.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDrag.Controls.Add(this.panel1);
             this.panelDrag.Controls.Add(this.lblLoding);
             this.panelDrag.Controls.Add(this.lblTitle);
             this.panelDrag.Controls.Add(this.lblPrint);
@@ -467,6 +511,17 @@
             this.panelDrag.TabIndex = 22;
             this.panelDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseDown);
             this.panelDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelDrag_MouseMove);
+            // 
+            // lblLoding
+            // 
+            this.lblLoding.AutoSize = true;
+            this.lblLoding.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblLoding.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblLoding.Location = new System.Drawing.Point(374, 743);
+            this.lblLoding.Name = "lblLoding";
+            this.lblLoding.Size = new System.Drawing.Size(260, 13);
+            this.lblLoding.TabIndex = 42;
+            this.lblLoding.Text = "검색량이 많을 경우, 30초 이상 소요될 수 있습니다.";
             // 
             // lblTitle
             // 
@@ -502,6 +557,29 @@
             this.lblExcel.Text = "내보내기";
             this.lblExcel.Click += new System.EventHandler(this.lblExcel_Click);
             // 
+            // imgPrint
+            // 
+            this.imgPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgPrint.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\print.png";
+            this.imgPrint.Location = new System.Drawing.Point(18, 741);
+            this.imgPrint.Name = "imgPrint";
+            this.imgPrint.Size = new System.Drawing.Size(16, 16);
+            this.imgPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgPrint.TabIndex = 43;
+            this.imgPrint.TabStop = false;
+            // 
+            // imgExcel
+            // 
+            this.imgExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgExcel.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\excel.png";
+            this.imgExcel.Location = new System.Drawing.Point(88, 741);
+            this.imgExcel.Name = "imgExcel";
+            this.imgExcel.Size = new System.Drawing.Size(16, 16);
+            this.imgExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgExcel.TabIndex = 40;
+            this.imgExcel.TabStop = false;
+            this.imgExcel.Click += new System.EventHandler(this.imgExcel_Click);
+            // 
             // panelGridview
             // 
             this.panelGridview.BackColor = System.Drawing.Color.Silver;
@@ -532,64 +610,6 @@
             this.lblCount.Text = "총 0개";
             this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // imgPrint
-            // 
-            this.imgPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgPrint.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\print.png";
-            this.imgPrint.Location = new System.Drawing.Point(18, 741);
-            this.imgPrint.Name = "imgPrint";
-            this.imgPrint.Size = new System.Drawing.Size(16, 16);
-            this.imgPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgPrint.TabIndex = 43;
-            this.imgPrint.TabStop = false;
-            // 
-            // imgExcel
-            // 
-            this.imgExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgExcel.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\excel.png";
-            this.imgExcel.Location = new System.Drawing.Point(88, 741);
-            this.imgExcel.Name = "imgExcel";
-            this.imgExcel.Size = new System.Drawing.Size(16, 16);
-            this.imgExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgExcel.TabIndex = 40;
-            this.imgExcel.TabStop = false;
-            this.imgExcel.Click += new System.EventHandler(this.imgExcel_Click);
-            // 
-            // imgHelp
-            // 
-            this.imgHelp.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.imgHelp.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\help3.png";
-            this.imgHelp.Location = new System.Drawing.Point(10, 8);
-            this.imgHelp.Name = "imgHelp";
-            this.imgHelp.Size = new System.Drawing.Size(16, 16);
-            this.imgHelp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgHelp.TabIndex = 40;
-            this.imgHelp.TabStop = false;
-            // 
-            // imgSearch
-            // 
-            this.imgSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgSearch.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\search.png";
-            this.imgSearch.Location = new System.Drawing.Point(952, 32);
-            this.imgSearch.Name = "imgSearch";
-            this.imgSearch.Size = new System.Drawing.Size(18, 18);
-            this.imgSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgSearch.TabIndex = 38;
-            this.imgSearch.TabStop = false;
-            this.imgSearch.Click += new System.EventHandler(this.imgSearch_Click);
-            // 
-            // imgReset
-            // 
-            this.imgReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgReset.ImageLocation = "\\\\E_Doc\\98 ETC\\E03 소모품(데이터베이스)\\test\\사진\\reset.png";
-            this.imgReset.Location = new System.Drawing.Point(924, 33);
-            this.imgReset.Name = "imgReset";
-            this.imgReset.Size = new System.Drawing.Size(17, 17);
-            this.imgReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgReset.TabIndex = 37;
-            this.imgReset.TabStop = false;
-            this.imgReset.Click += new System.EventHandler(this.imgReset_Click);
-            // 
             // imgMini
             // 
             this.imgMini.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -614,16 +634,85 @@
             this.imgExit.TabStop = false;
             this.imgExit.Click += new System.EventHandler(this.imgExit_Click);
             // 
-            // lblLoding
+            // panel1
             // 
-            this.lblLoding.AutoSize = true;
-            this.lblLoding.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblLoding.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblLoding.Location = new System.Drawing.Point(374, 743);
-            this.lblLoding.Name = "lblLoding";
-            this.lblLoding.Size = new System.Drawing.Size(260, 13);
-            this.lblLoding.TabIndex = 42;
-            this.lblLoding.Text = "검색량이 많을 경우, 30초 이상 소요될 수 있습니다.";
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Location = new System.Drawing.Point(638, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(358, 28);
+            this.panel1.TabIndex = 128;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label8.Location = new System.Drawing.Point(193, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(10, 15);
+            this.label8.TabIndex = 82;
+            this.label8.Text = "|";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(108, 7);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 15);
+            this.label13.TabIndex = 65;
+            this.label13.Text = "생산진행현황";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(209, 7);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 15);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "공정 이력";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.Location = new System.Drawing.Point(274, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 15);
+            this.label5.TabIndex = 84;
+            this.label5.Text = "|";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(290, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 15);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "3SPT FBG";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label7.Location = new System.Drawing.Point(3, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 15);
+            this.label7.TabIndex = 86;
+            this.label7.Text = "실시간 공정 조회";
             // 
             // Total
             // 
@@ -642,20 +731,21 @@
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "생산진행현황";
-            this.Load += new System.EventHandler(this.Total_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelDrag.ResumeLayout(false);
-            this.panelDrag.PerformLayout();
-            this.panelGridview.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHelp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgReset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelDrag.ResumeLayout(false);
+            this.panelDrag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgExcel)).EndInit();
+            this.panelGridview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgExit)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -705,5 +795,12 @@
         private System.Windows.Forms.PictureBox imgHelp;
         private System.Windows.Forms.Label lblHelp;
         private System.Windows.Forms.Label lblLoding;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

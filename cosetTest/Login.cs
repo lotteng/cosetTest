@@ -17,7 +17,10 @@ namespace cosetTest
 {
     public partial class Login : Form
     {
-        // drag & drop
+        //////////////////////////////////////////////////////////////////// Constructor
+        MariaDB mariaDB = new MariaDB();
+
+
         private Point point = new Point();
 
         // Place holder
@@ -31,6 +34,7 @@ namespace cosetTest
         public Login()
         {
             InitializeComponent();
+
 
             //ID, Password TextBox Placeholder 설정
             txtList = new TextBox[] { txtId, txtPw };
@@ -47,7 +51,7 @@ namespace cosetTest
         }
 
 
-    // Place holder
+        // Place holder
         private void RemovePlaceholder(object sender, EventArgs e)
         {
             TextBox txt = (TextBox)sender;
@@ -73,25 +77,7 @@ namespace cosetTest
 
 
 
-
-
-    // drag & drop (Move For Form)
-        private void panelDrag_MouseDown(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
-        }
-
-        private void panelDrag_MouseMove(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
-            }
-        }
-
-
-
-    // Enter key
+        // Enter key
         private void txtId_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -111,45 +97,36 @@ namespace cosetTest
         {
             try
             {
-                MySqlConnection connection = new MySqlConnection("Server = 192.168.10.240 ; Database = eunbi; Uid = root ; Pwd = coset!!123");
-
-                connection.Open(); // SQL 서버 연결
 
                 int login_status = 0;   //로그인 = 1, 비로그인 = 0
 
                 string id = txtId.Text;
                 string pw = txtPw.Text;
-                string selectQuery = "SELECT * FROM USER WHERE ID_PK = \'" + id + "\' "; // MySQL에 전송할 명령어 입력. (USER 테이블 값 읽기)
 
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-                // MySqlCommand는 MySQL로 명령어를 전송하기 위한 클래스임.
-                // MySQL에 selectQuery 값을 보내고, connection 값을 보내 연결을 시도한다.
-                // 위 정보를 Selectcommand 변수에 저장한다.
+                string query = "SELECT * FROM USER WHERE ID_PK = \'" + id + "\' ";
 
-                MySqlDataReader userAccount = Selectcommand.ExecuteReader();
-                // MySqlDataReader = 입력값을 받기 위함.
-                // Selectcommand 변수에 ExecuteReader() 객체를 통해 입력값을 받고, 해당 정보를 userAccount 변수에 저장함.
+                MySqlDataReader userAccount = mariaDB.GetReader(query); ;
 
-
-                while (userAccount.Read()) // userAccount가 Read 되고 있을 동안
+                while (userAccount.Read())
                 {
-                    if ( id == (string)userAccount["ID_PK"] && pw == (string)userAccount["PW"]) // id, pw 가 USER 테이블의 필드명 정보와 일치한다면
+                    if (id == (string)userAccount["ID_PK"] && pw == (string)userAccount["PW"])
                     {
                         login_status = 1;
+
                     }
                 }
 
-                connection.Close(); // MySQL과 연결 끊음.
+                userAccount.Close();
+                mariaDB.GetConnection().Close();
+
 
                 if (login_status == 1)
                 {
-                    
                     this.Hide();
-                    
+
                     Main FormMain = new Main();
                     FormMain.Show();
 
-                    //this.Close();
                 }
 
                 else
@@ -167,23 +144,14 @@ namespace cosetTest
 
         }
 
-    // Find ID, PW
+        // Find ID, PW
         private void lblFind_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
         }
 
-        private void imgExit_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.Exit();
-        }
 
-        private void imgMini_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-    // checkbox image change
+        // checkbox image change
         private void checkAutologin_CheckedChanged(object sender, EventArgs e)
         {
             if (checkAutologin.Checked)
@@ -210,8 +178,9 @@ namespace cosetTest
             }
         }
 
+        
 
-    // Link Label Underline setting 
+        // Link Label Underline setting 
         private void Login_Load(object sender, EventArgs e)
         {
             lblFind.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
@@ -221,5 +190,34 @@ namespace cosetTest
         {
             lblFind.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
         }
+
+
+
+
+        // drag & drop (Move For Form)
+        private void panelDrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            point = new Point(e.X, e.Y);
+        }
+
+        private void panelDrag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
+            }
+        }
+
+
+        private void imgExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void imgMini_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
     }
 }
